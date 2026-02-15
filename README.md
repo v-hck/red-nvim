@@ -7,9 +7,7 @@
 ## Installation
 - If you already have neovim, make backups of your configuration.
 ```sh
-sudo dnf in neovim lazygit luarocks
-sudo luarocks install dkjson
-sudo luarocks install luafilesystem
+sudo dnf in neovim lazygit
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
 mkdir -p ~/.config/nvim
 sudo mkdir -p ~/.config/nvim
