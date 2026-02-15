@@ -1,8 +1,3 @@
-<p align="center">
-A minimalistic nvim config aimed at Python developers. It is a lightweight replacement for PyCharm and VsCode, eliminating all unnecessary featuresd to be easily portable for running on servers and for deployment on Linux systems.
-I created this fork to remove these errors https://github.com/Zproger/GenesisNvim/pull/19 and make it convenient for me. And thanks to Zproger for the great work
-</p>
-
 ## Preview
 ![image](images/1.png)
 ![image](images/2.png)
@@ -20,6 +15,7 @@ nvim -c "MasonInstall actionlint basedpyright cfn-lint circleci-yaml-language-se
 ```
 ## Post Installation
 ```sh
-mv luau1.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/configurations/luau.lua
-mv luau2.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/locators/luau.lua
+sudo mv luau1.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/configurations/luau.lua
+sudo mv luau2.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/locators/luau.lua
+sudo mv red.vim usr/share/nvim/runtime/colors/red.vim
 ```
