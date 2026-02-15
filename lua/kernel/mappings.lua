@@ -43,28 +43,6 @@ vim.keymap.set("n", "<leader>rc", "<cmd>NvimTreeCollapse<CR>", { desc = "Collaps
 vim.keymap.set("n", "<leader>rf", "<cmd>NvimTreeFocus<CR>", { desc = "Focus on tree", noremap = true, silent = true })
 vim.keymap.set("n", "<leader>rr", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh tree", noremap = true, silent = true })
 
-local wk = require("which-key")
-wk.add({
-	{ "<leader>e",  group = "View Diagnostic Message" },
-	{ "<leader>q",  group = "Focus Nvim Tree" },
-
-	{ "<leader>r",  group = "nvim-tree" },
-	{ "<leader>f",  group = "file" },
-	{ "<leader>w",  group = "which-key" },
-	{ "<leader>c",  group = "code" },
-	{ "<leader>t",  group = "toggle-term" },
-	{ "<leader>x",  group = "trouble" },
-	{ "<leader>g",  group = "git" },
-	{ "<leader>b",  group = "buffer-line" },
-	{ "<leader>z",  group = "nvim-ufo" },
-	{ "<leader>d",  group = "neogen" },
-	{ "<leader>v",  group = "todo-list" },
-	{ "<leader>a",  group = "ale" },
-
-	{ "<leader>cW",  group = "workspace" },
-	{ "<leader>cl",  group = "lsp" },
-})
-
 -- normal mode: Ctrl+A -> выделить всё
 vim.keymap.set('n', '<C-a>', 'ggVG', { desc = 'Select all' })
 -- insert mode: Ctrl+A -> выйти и выделить всё
@@ -109,3 +87,28 @@ vim.keymap.set('n', '<leader>clr', '<cmd>LspRestart<cr>', { desc = 'LSP Restart'
 vim.keymap.set('n', '<leader>af', ':ALEFix<CR>', { desc = 'Fix file with configured fixers' })
 vim.keymap.set('n', '<leader>aT', ':ALEToggle<CR>', { desc = 'Toggle ALE on/off for buffer' })
 vim.keymap.set('n', '<leader>ai', ':ALEInfo<CR>', { desc = 'Show ALE info for current buffer' })
+
+vim.keymap.set('n', '<leader>q', '<cmd>NvimTreeFocus<CR>')
+
+
+local wk = require("which-key")
+wk.add({
+	{ "<leader>e",  group = "View Diagnostic Message" },
+	{ "<leader>q",  group = "Focus Nvim Tree" },
+
+	{ "<leader>r",  group = "nvim-tree" },
+	{ "<leader>f",  group = "file" },
+	{ "<leader>w",  group = "which-key" },
+	{ "<leader>c",  group = "code" },
+	{ "<leader>t",  group = "toggle-term" },
+	{ "<leader>x",  group = "trouble" },
+	{ "<leader>g",  group = "git" },
+	{ "<leader>b",  group = "buffer-line" },
+	{ "<leader>z",  group = "nvim-ufo" },
+	{ "<leader>d",  group = "neogen" },
+	{ "<leader>v",  group = "todo-list" },
+	{ "<leader>a",  group = "ale" },
+
+	{ "<leader>cW",  group = "workspace" },
+	{ "<leader>cl",  group = "lsp" },
+})
