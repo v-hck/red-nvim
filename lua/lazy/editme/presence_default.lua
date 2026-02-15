@@ -11,8 +11,8 @@ return {
 	file_assets         = {},                      -- Custom file asset definitions keyed by file names and extensions (see default config at `lua/presence/file_assets.lua` for reference)
 	show_time           = true,                    -- Show the timer
 	buttons             = {
-		{ label = "Download My NeoVim", url = "https://github.com/v-hck/red-nvim" }
-	},
+		{ label = "My NeoVim Preset", url = "https://github.com/v-hck/red-nvim" }
+	}, -- NOTE: works with maximum 2 buttons
 
 	-- Rich Presence text options
 	editing_text        = "Editing %s",      -- Format string rendered when an editable file is loaded in the buffer (either string or function(filename: string): string)
