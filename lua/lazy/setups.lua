@@ -1,38 +1,11 @@
-require("presence").setup({
-	-- General options
-	auto_update         = true,                    -- Update activity based on autocmd events (if `false`, map or manually execute `:lua package.loaded.presence:update()`)
-	neovim_image_text   = "The One True Text Editor", -- Text displayed when hovered over the Neovim image
-	main_image          = "file",                  -- Main image display (either "neovim" or "file")
-	-- client_id           = "",    -- Use your own Discord application client id (not recommended)
-	log_level           = nil,                     -- Log messages at or above this level (one of the following: "debug", "info", "warn", "error")
-	debounce_timeout    = 10,                      -- Number of seconds to debounce events (or calls to `:lua package.loaded.presence:update(<filename>, true)`)
-	enable_line_number  = true,                    -- Displays the current line number instead of the current project
-	blacklist           = {},                      -- A list of strings or Lua patterns that disable Rich Presence if the current file name, path, or workspace matches
-	file_assets         = {},                      -- Custom file asset definitions keyed by file names and extensions (see default config at `lua/presence/file_assets.lua` for reference)
-	show_time           = true,                    -- Show the timer
-	buttons             = {
-		{ label = "Download",     url = "https://github.com/v-hck/red-nvim" }
-	},
-
-	-- Rich Presence text options
-	editing_text        = "Editing %s",      -- Format string rendered when an editable file is loaded in the buffer (either string or function(filename: string): string)
-	file_explorer_text  = "Browsing %s",     -- Format string rendered when browsing a file explorer (either string or function(file_explorer_name: string): string)
-	git_commit_text     = "Committing changes", -- Format string rendered when committing changes in git (either string or function(filename: string): string)
-	plugin_manager_text = "Managing plugins", -- Format string rendered when managing plugins (either string or function(plugin_manager_name: string): string)
-	reading_text        = "Reading %s",      -- Format string rendered when a read-only or unmodifiable file is loaded in the buffer (either string or function(filename: string): string)
-	workspace_text      = "Working on %s",   -- Format string rendered when in a git repository (either string or function(project_name: string|nil, filename: string): string)
-	line_number_text    = "Line %s out of %s", -- Format string rendered when `enable_line_number` is set to true (either string or function(line_number: number, line_count: number): string)
-
-})
-
 -- vim.lsp.set_log_level("debug")
 require("luau-lsp").setup {
-	-- types = {
-	-- 	definition_files = {
-	-- 		["@unc"] = "",
-	-- 	},
-	-- 	-- documentation_files = { "" },
-	-- },
+	types = {
+		definition_files = {
+			["@unc"] = vim.fn.expand("~/.config/nvim/unc.d.luau"),
+		},
+		-- documentation_files = { "" },
+	},
 	sourcemap = {
 		enabled = false,
 		autogenerate = false, -- automatic generation when the server is initialized
@@ -271,33 +244,33 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
-vim.api.nvim_create_autocmd('LspAttach', {
-	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-	callback = function(ev)
-		-- Enable completion triggered by <c-x><c-o>
-		vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
-		-- Buffer local mappings.
-		-- See `:help vim.lsp.*` for documentation on any of the below functions
-		local opts = { buffer = ev.buf }
-		vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-		vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-
-		vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { desc = "Rename variable", buffer = ev.buf })
-		vim.keymap.set('n', '<leader>cv', vim.lsp.buf.references, { desc = "Variable references", buffer = ev.buf })
-		vim.keymap.set('n', '<leader>cd', vim.lsp.buf.declaration, { desc = "Variable declaration", buffer = ev.buf })
-		vim.keymap.set('n', '<leader>cf', vim.lsp.buf.definition, { desc = "Variable definition", buffer = ev.buf })
-		vim.keymap.set('n', '<leader>ca', vim.lsp.buf.hover, { desc = "Variable info", buffer = ev.buf })
-		vim.keymap.set({ 'n', 'v' }, '<space>cd', vim.lsp.buf.code_action, { desc = "Code action", buffer = ev.buf })
-		vim.keymap.set('n', '<space>cw', function() vim.lsp.buf.format{ async = true } end, { desc = "Beautifier", buffer = ev.buf })
-
-		-- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-		-- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-		-- vim.keymap.set('n', '<space>wl', function()
-		--   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-		-- end, opts)
-	end,
-})
+-- vim.api.nvim_create_autocmd('LspAttach', {
+-- 	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+-- 	callback = function(ev)
+-- 		-- Enable completion triggered by <c-x><c-o>
+-- 		vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+--
+-- 		-- Buffer local mappings.
+-- 		-- See `:help vim.lsp.*` for documentation on any of the below functions
+-- 		local opts = { buffer = ev.buf }
+-- 		vim.keymap.set({ 'n', 'v' }, '<leader>cn', vim.lsp.buf.rename, { desc = "Rename variable", buffer = ev.buf })
+-- 		vim.keymap.set({ 'n', 'v' }, '<leader>cr', vim.lsp.buf.references, { desc = "Variable references", buffer = ev.buf })
+-- 		vim.keymap.set({ 'n', 'v' }, '<leader>cd', vim.lsp.buf.declaration, { desc = "Variable declaration", buffer = ev.buf })
+-- 		vim.keymap.set({ 'n', 'v' }, '<leader>cf', vim.lsp.buf.definition, { desc = "Variable definition", buffer = ev.buf })
+-- 		vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, { desc = "Code action", buffer = ev.buf })
+-- 		vim.keymap.set({ 'n', 'v' }, '<space>cw', function() vim.lsp.buf.format { async = true } end, { desc = "Beautifier", buffer = ev.buf })
+--
+-- 		-- ALE keymaps converted to vim.keymap.set
+--
+-- 		-- Navigation / Definition
+-- 		-- vim.keymap.set('n', '<leader>ca', ':ALEHover<CR>', { desc = 'Show type/hover info' }) -- FIX/NOTE: better then lsp.buf.hover but dont work in luau
+--
+-- 		-- Fixing and Linting
+-- 		vim.keymap.set('n', '<leader>af', ':ALEFix<CR>', { desc = 'Fix file with configured fixers' })
+-- 		vim.keymap.set('n', '<leader>aT', ':ALEToggle<CR>', { desc = 'Toggle ALE on/off for buffer' })
+-- 		vim.keymap.set('n', '<leader>ai', ':ALEInfo<CR>', { desc = 'Show ALE info for current buffer' })
+-- 	end,
+-- })
 
 local function default_header()
 	return {
@@ -471,7 +444,7 @@ cmp.setup.cmdline(':', {
 
 -- LSP capabilities setup
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require('lspconfig')['ts_ls'].setup { capabilities = capabilities }
+-- require('lspconfig')['ts_ls'].setup { capabilities = capabilities }
 
 -- Highlight for border colors using Catppuccin Mocha color
 vim.cmd('highlight CmpBorder guifg=' .. border_color)

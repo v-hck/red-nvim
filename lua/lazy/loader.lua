@@ -32,8 +32,11 @@ for _,plg in next,require("lazy.others") do
 	end
 end
 local ltt = {}
-for i,v in next,lt do ltt[#ltt+1] = v end
+for _,v in next,lt do ltt[#ltt+1] = v end
 local lazy = require("lazy")
 lazy.setup(ltt)
 
 require("lazy.setups")
+
+require("presence").setup(dofile(vim.fn.expand("~/.config/nvim/lua/lazy/editme/presence.lua"))) -- NOTE: idk why require("editme.presence") dont work
+require("codestats").setup(dofile(vim.fn.expand("~/.config/nvim/lua/lazy/editme/codestats.lua"))) -- NOTE: idk why require("editme.codestats") dont work

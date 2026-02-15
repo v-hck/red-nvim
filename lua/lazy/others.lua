@@ -3,9 +3,6 @@ return {
 	-- Treesitter
 	{ 'nvim-treesitter/nvim-treesitter' },
 
-	-- LSP
-	{ 'neovim/nvim-lspconfig' },
-
 	-- Autocomplete
 	{ 'hrsh7th/cmp-nvim-lsp' },
 	{ 'hrsh7th/cmp-buffer' },
@@ -77,7 +74,7 @@ return {
 	{
 		"vhyrro/luarocks.nvim",
 		priority = 1001,
-		opts = { rocks = { "magick", "dkjson" } },
+		opts = { rocks = { "magick", "dkjson", "luafilesystem" } },
 	},
 
 	-- Trouble
@@ -100,17 +97,6 @@ return {
 		dependencies = { 'nvim-lua/plenary.nvim' },
 		event = { 'TextChanged', 'InsertEnter' },
 		cmd = { 'CodeStatsXpSend', 'CodeStatsProfileUpdate' },
-		config = function()
-			require('codestats').setup {
-				username = '',          -- needed to fetch profile data
-				base_url = 'https://codestats.net', -- codestats.net base url
-				api_key = '',
-				send_on_exit = true,        -- send xp on nvim exit
-				send_on_timer = true,       -- send xp on timer
-				timer_interval = 60000,     -- timer interval in milliseconds (minimum 1000ms to prevent DDoSing codestat.net servers)
-				curl_timeout = 5,           -- curl request timeout in seconds
-			}
-		end,
 	},
 
 	{
@@ -122,6 +108,11 @@ return {
 				notify = true,
 			}           -- автоопределение прав, :w работает
 		end,
-	}
+	},
+
+	{
+		'folke/neodev.nvim',
+		opts = {}, -- автоматическая настройка
+	},
 
 }
