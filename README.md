@@ -5,6 +5,9 @@
 ![image](images/4.png)
 ## Tips
 press `spece w a` to see all binds
+press `ctrl a` to select all text in file
+press `ctrl s` to save file
+press `ctrl q` to quit
 u can change colorscheme in `~/.config/nvim/lua/kernel/configs.lua`
 ## Installation
 - If you already have neovim, make backups of your configuration.
