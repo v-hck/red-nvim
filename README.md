@@ -19,8 +19,8 @@ nvim -c "MasonInstall actionlint basedpyright cfn-lint circleci-yaml-language-se
 ```
 ## Post Installation
 ```sh
-sudo mv ~/.config/nvim/luau1.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/configurations/luau.lua
-sudo mv ~/.config/nvim/luau2.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/locators/luau.lua
+mv ~/.config/nvim/luau1.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/configurations/luau.lua
+mv ~/.config/nvim/luau2.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/locators/luau.lua
 ```
 ## Plugins
 - ale
