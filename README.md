@@ -23,8 +23,8 @@ nvim ~/.config/nvim/lua/lazy/editme -c "MasonInstall actionlint basedpyright cir
 ```
 ## Post Installation
 ```sh
-mv ~/.config/nvim/luau1.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/configurations/luau.lua
-mv ~/.config/nvim/luau2.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/locators/luau.lua
+cp ~/.config/nvim/luau1.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/configurations/luau.lua
+cp ~/.config/nvim/luau2.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/locators/luau.lua
 ```
 ## Plugins
 - ale
