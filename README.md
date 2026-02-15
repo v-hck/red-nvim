@@ -19,3 +19,42 @@ sudo mv luau1.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/configurations/luau
 sudo mv luau2.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/locators/luau.lua
 sudo mv red.vim usr/share/nvim/runtime/colors/red.vim
 ```
+## Plugins
+- ale
+- bufferline.nvim
+- catppuccin
+- cellular-automaton.nvim
+- cmp-buffer
+- cmp-cmdline
+- cmp-nvim-lsp
+- cmp-path
+- codestats.nvim
+- Comment.nvim
+- dashboard-nvim
+- gitsigns.nvim
+- gruvbox.nvim
+- lazy.nvim
+- lualine.nvim
+- luarocks.nvim
+- luau-lsp.nvim
+- mason.nvim
+- mini.move
+- mini.nvim
+- mini.pairs
+- nvim-cmp
+- nvim-colorizer.lua
+- nvim-lspconfig
+- nvim-tree.lua
+- nvim-treesitter
+- nvim-ufo
+- nvim-web-devicons
+- plenary.nvim
+- presence.nvim
+- promise-async
+- suda.nvim
+- telescope.nvim
+- todo-comments.nvim
+- toggleterm.nvim
+- trouble.nvim
+- vim-illuminate
+- which-key.nvim
