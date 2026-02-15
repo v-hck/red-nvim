@@ -11,6 +11,8 @@ sudo dnf install neovim lazygit
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
 mkdir -p ~/.config/nvim
 git clone https://github.com/v-hck/red-nvim ~/.config/nvim
+mv ~/.config/nvim/lua/lazy/editme/presence_default.lua ~/.config/nvim/lua/lazy/editme/presence.lua
+mv ~/.config/nvim/lua/lazy/editme/codestats_default.lua ~/.config/nvim/lua/lazy/editme/codestat.lua
 sudo mv ~/.config/nvim/red.vim /usr/share/nvim/runtime/colors/red.vim
 nvim -c "MasonInstall actionlint basedpyright cfn-lint circleci-yaml-language-server emmylua-codeformat hyprls lemmy-help local-lua-debugger-vscode lua-language-server luacheck luau-lsp lwc-language-server pyright ruff vim-language-server vint"
 ```
