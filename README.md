@@ -3,7 +3,9 @@
 ![image](images/2.png)
 ![image](images/3.png)
 ![image](images/4.png)
-
+## Tips
+press `spece w a` to see all binds
+u can change colorscheme in `~/.config/nvim/lua/kernel/configs.lua`
 ## Installation
 - If you already have neovim, make backups of your configuration.
 ```sh
@@ -14,7 +16,7 @@ git clone https://github.com/v-hck/red-nvim ~/.config/nvim
 cp ~/.config/nvim/lua/lazy/editme/presence_default.lua ~/.config/nvim/lua/lazy/editme/presence.lua
 cp ~/.config/nvim/lua/lazy/editme/codestats_default.lua ~/.config/nvim/lua/lazy/editme/codestat.lua
 sudo mv ~/.config/nvim/red.vim /usr/share/nvim/runtime/colors/red.vim
-nvim -c "MasonInstall actionlint basedpyright cfn-lint circleci-yaml-language-server emmylua-codeformat hyprls lemmy-help local-lua-debugger-vscode lua-language-server luacheck luau-lsp lwc-language-server pyright ruff vim-language-server vint"
+nvim -c "MasonInstall actionlint basedpyright circleci-yaml-language-server flakeheaven hyprls lua-language-server luacheck luau-lsp pyright ruff selene stylua vim-language-server vint"
 ```
 ## Post Installation
 ```sh
