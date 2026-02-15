@@ -15,6 +15,7 @@ nvim -c "MasonInstall actionlint basedpyright cfn-lint circleci-yaml-language-se
 ```
 ## Post Installation
 ```sh
+cd ~/.config/nvim
 sudo mv luau1.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/configurations/luau.lua
 sudo mv luau2.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/locators/luau.lua
 sudo mv red.vim usr/share/nvim/runtime/colors/red.vim
