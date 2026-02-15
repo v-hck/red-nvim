@@ -1,3 +1,5 @@
+vim.cmd.colorscheme "red"
+
 vim.api.nvim_buf_set_option(0, 'modifiable', true)
 
 -- Basic Settings
@@ -72,6 +74,5 @@ vim.opt.fillchars = {
 
 vim.opt.hidden = true
 
-vim.cmd.colorscheme "red"
 -- vim.cmd([[highlight clear LineNr]])
 -- vim.cmd([[highlight clear SignColumn]])
