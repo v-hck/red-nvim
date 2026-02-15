@@ -20,7 +20,7 @@ while true do
 	if not name then break end
 	if type == "file" and name:match("%.lua$") then
 		local file_path = ppath .. "/" .. name
-		local spec = dofile(file_path)
+		local spec = dofile(vim.fn.expand(file_path))
 		lt[spec[1]] = spec
 	end
 end
