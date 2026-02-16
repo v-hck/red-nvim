@@ -26,7 +26,7 @@ nvim ~/.config/nvim/lua/lazy/editme -c "MasonInstall actionlint basedpyright cir
 cp ~/.config/nvim/for_copy/luau1.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/configurations/luau.lua
 cp ~/.config/nvim/for_copy/luau2.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/locators/luau.lua
 cp ~/.config/nvim/for_copy/api-docs.json ~/.local/share/nvim/luau-lsp/docs/api-docs.json
-cp ~/.config/nvim/for_copy/globalTypes.PluginSecurity.d.luau ~/.local/share/nvim/luau-lsp/docs/api-docs.json
+cp ~/.config/nvim/for_copy/globalTypes.PluginSecurity.d.luau ~/.local/share/nvim/luau-lsp/defs/globalTypes.PluginSecurity.d.luau
 ```
 ## Plugins
 ### Fully Configurated
