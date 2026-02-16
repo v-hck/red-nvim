@@ -25,10 +25,22 @@ nvim ~/.config/nvim/lua/lazy/editme -c "MasonInstall actionlint basedpyright cir
 ```sh
 cp ~/.config/nvim/for_copy/luau1.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/configurations/luau.lua
 cp ~/.config/nvim/for_copy/luau2.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/locators/luau.lua
+cp ~/.config/nvim/for_copy/api-docs.json ~/.local/share/nvim/luau-lsp/docs/api-docs.json
+cp ~/.config/nvim/for_copy/globalTypes.PluginSecurity.d.luau ~/.local/share/nvim/luau-lsp/docs/api-docs.json
 ```
 ## Plugins
-- ale
-- bufferline.nvim
+### Fully Configurated
+- ale.lua
+- bufferline.lua
+- gitsigns.lua
+- neogen.lua
+- nvim-lspconfig.lua
+- nvim-tree.lua
+- nvim-ufo.lua
+- toggleterm.lua
+- trouble.lua
+- whichkey.lua
+### Others
 - catppuccin
 - cellular-automaton.nvim
 - cmp-buffer
@@ -38,7 +50,6 @@ cp ~/.config/nvim/for_copy/luau2.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/
 - codestats.nvim
 - Comment.nvim
 - dashboard-nvim
-- gitsigns.nvim
 - gruvbox.nvim
 - lazy.nvim
 - lualine.nvim
@@ -48,20 +59,16 @@ cp ~/.config/nvim/for_copy/luau2.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/
 - mini.move
 - mini.nvim
 - mini.pairs
+- neodev.nvim
 - nvim-cmp
 - nvim-colorizer.lua
-- nvim-lspconfig
-- nvim-tree.lua
 - nvim-treesitter
-- nvim-ufo
 - nvim-web-devicons
 - plenary.nvim
 - presence.nvim
 - promise-async
+- render-markdown
 - suda.nvim
 - telescope.nvim
 - todo-comments.nvim
-- toggleterm.nvim
-- trouble.nvim
 - vim-illuminate
-- which-key.nvim

@@ -1,5 +1,5 @@
 set background=dark
-source $VIMRUNTIME/colors/vim.lua 
+source $VIMRUNTIME/colors/vim.lua
 let g:colors_name = 'blood_black'
 let s:t_Co = &t_Co
 if (has('termguicolors') && &termguicolors) || has('gui_running')

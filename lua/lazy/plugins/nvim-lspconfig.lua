@@ -1,6 +1,6 @@
 return {
-	'neovim/nvim-lspconfig',
-	event = { 'BufReadPre', 'BufNewFile' }, -- Загружается при открытии файла
+	"neovim/nvim-lspconfig",
+	event = { "BufReadPre", "BufNewFile" }, -- Загружается при открытии файла
 	-- dependencies = { 'saghen/blink.cmp' }, -- Раскомментируйте, если используете автодополнение
 	opts = {
 		-- Серверы, которые нужно включить (из :help lspconfig-all)
@@ -17,15 +17,15 @@ return {
 		settings = {
 			-- Пример для Lua
 			Lua = {
-				runtime = { version = 'LuaJIT' },
+				runtime = { version = "LuaJIT" },
 				workspace = {
-					library = vim.api.nvim_get_runtime_file('', true), -- FIX: idk why it dont work
+					library = vim.api.nvim_get_runtime_file("", true), -- FIX: idk why it dont work
 					checkThirdParty = false,
 				},
 				diagnostics = {
 					globals = {
-						"vim"
-					}
+						"vim",
+					},
 				},
 				telemetry = { enable = false },
 			},
@@ -35,17 +35,17 @@ return {
 		-- 1. Базовая настройка диагностики
 		vim.diagnostic.config({
 			virtual_text = true, -- Показывать диагностику как виртуальный текст
-			signs = true,    -- Показывать значки на полях
+			signs = true, -- Показывать значки на полях
 			underline = true, -- Подчёркивать проблемные места
 			update_in_insert = false, -- Не обновлять во время вставки
 			severity_sort = true, -- Сортировать по серьёзности
 			float = {
 				focusable = true,
-				style = 'minimal',
-				border = 'rounded',
+				style = "minimal",
+				border = "rounded",
 				source = true, -- Показывать источник диагностики
-				header = '',
-				prefix = '',
+				header = "",
+				prefix = "",
 			},
 		}) -- комментарий: настройка отображения ошибок и предупреждений
 
@@ -55,7 +55,7 @@ return {
 				-- Для каждого сервера можно задать специфичные настройки, если они есть в opts.settings[server]
 				local server_opts = opts.settings and opts.settings[server] or {}
 				vim.lsp.config(server, server_opts) -- комментарий: регистрация конфига сервера
-				vim.lsp.enable(server)  -- комментарий: включение сервера для его filetypes
+				vim.lsp.enable(server) -- комментарий: включение сервера для его filetypes
 			end
 		end
 
