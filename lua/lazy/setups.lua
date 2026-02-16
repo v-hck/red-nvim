@@ -2,9 +2,11 @@
 require("luau-lsp").setup {
 	types = {
 		definition_files = {
-			["@unc"] = vim.fn.expand("~/.config/nvim/unc.d.luau"),
+			["@unc"] = vim.fn.expand("~/.config/nvim/roblox-unc/unc.d.luau"),
 		},
-		-- documentation_files = { "" },
+		documentation_files = {
+			["@unc"] = vim.fn.expand("~/.config/nvim/roblox-unc/unc.D.json")
+		},
 	},
 	sourcemap = {
 		enabled = false,

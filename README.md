@@ -18,13 +18,13 @@ mkdir -p ~/.config/nvim
 git clone https://github.com/v-hck/red-nvim ~/.config/nvim
 cp ~/.config/nvim/lua/lazy/editme/presence_default.lua ~/.config/nvim/lua/lazy/editme/presence.lua
 cp ~/.config/nvim/lua/lazy/editme/codestats_default.lua ~/.config/nvim/lua/lazy/editme/codestats.lua
-sudo cp ~/.config/nvim/red.vim /usr/share/nvim/runtime/colors/red.vim
-nvim ~/.config/nvim/lua/lazy/editme -c "MasonInstall actionlint basedpyright circleci-yaml-language-server flakeheaven hyprls lua-language-server luacheck luau-lsp pyright ruff selene stylua vim-language-server vint"
+sudo cp ~/.config/nvim/for_copy/red.vim /usr/share/nvim/runtime/colors/red.vim
+nvim ~/.config/nvim/lua/lazy/editme -c "MasonInstall actionlint basedpyright circleci-yaml-language-server flakeheaven hyprls lua-language-server luacheck luau-lsp pyright ruff selene stylua vim-language-server vint biome"
 ```
 ## Post Installation
 ```sh
-cp ~/.config/nvim/luau1.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/configurations/luau.lua
-cp ~/.config/nvim/luau2.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/locators/luau.lua
+cp ~/.config/nvim/for_copy/luau1.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/configurations/luau.lua
+cp ~/.config/nvim/for_copy/luau2.lua ~/.local/share/nvim/lazy/neogen/lua/neogen/locators/luau.lua
 ```
 ## Plugins
 - ale

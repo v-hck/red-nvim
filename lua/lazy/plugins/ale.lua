@@ -19,6 +19,9 @@ return {
 			vim = { "vint", "vim-language-server" },
 			yaml = { "actionlint", "circleci-yaml-language-server" },
 			hyrp = { "hyprls" },
+			javascript = { "biome" },
+			typescript = { "biome" },
+			json = { "biome" },
 		},         -- use default linters for all filetypes
 		-- Set this to fix files when you save them
 		fix_on_save = 0, -- run :ALEFix on buffer write
@@ -28,6 +31,9 @@ return {
 			lua = { "stylua" },                            -- example for Lua
 			luau = { "stylua" },                           -- example for Lua
 			python = { "ruff" },                           -- example for Python
+			javascript = { "biome" },
+			typescript = { "biome" },
+			json = { "biome" },
 		},
 		-- === Signs (Gutter) ===
 		sign_column_always = 1, -- keep sign column open to avoid shifting

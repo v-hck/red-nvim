@@ -1,0 +1,2165 @@
+{
+	"@roblox/globaltype/WebSocket": {
+		"documentation": "The WebSocket class provides a simple interface for sending and receiving data over a WebSocket connection.",
+		"keys": {
+			"connect": "@roblox/global/WebSocket.connect",
+			"Send": "@roblox/global/WebSocket.Send",
+			"Close": "@roblox/global/WebSocket.Close",
+			"OnMessage": "@roblox/global/WebSocket.OnMessage",
+			"OnClose": "@roblox/global/WebSocket.OnClose"
+		},
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/WebSocket.md",
+		"code_sample": "local ws = WebSocket.connect(\"ws://localhost:8080\")\n\nws.OnMessage:Connect(function(message)\n\tprint(message)\nend)\n\nws.OnClose:Connect(function()\n\tprint(\"Closed\")\nend)\n\nws:Send(\"Hello, World!\")"
+	},
+	"@roblox/global/WebSocket.connect": {
+		"documentation": "Establishes a WebSocket connection to the specified URL.",
+		"params": [
+			{
+				"name": "url",
+				"documentation": "@roblox/global/WebSocket.connect/param/0"
+			}
+		],
+		"returns": [
+			{
+				"name": "WebSocket",
+				"documentation": "@roblox/global/WebSocket.connect/return/0"
+			}
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/WebSocket.md#constructor",
+		"code_sample": "local ws = WebSocket.connect(\"ws://localhost:8080\")"
+	},
+	"@roblox/global/WebSocket.Send": {
+		"documentation": "Sends a message over the WebSocket connection.",
+		"params": [
+			{
+				"name": "message",
+				"documentation": "@roblox/global/WebSocket.Send/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/WebSocket.md#class",
+		"code_sample": "ws:Send(\"Hello, World!\")"
+	},
+	"@roblox/global/WebSocket.Close": {
+		"documentation": "Closes the WebSocket connection.",
+		"params": [],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/WebSocket.md#class",
+		"code_sample": "ws:Close()"
+	},
+	"@roblox/global/WebSocket.OnMessage": {
+		"documentation": "Fired when a message is received over the WebSocket connection.",
+		"params": [
+			{
+				"name": "message",
+				"documentation": "@roblox/global/WebSocket.OnMessage/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/WebSocket.md#class",
+		"code_sample": "ws.OnMessage:Connect(function(message)\n\tprint(message)\nend)"
+	},
+	"@roblox/global/WebSocket.OnClose": {
+		"documentation": "Fired when the WebSocket connection is closed.",
+		"params": [],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/WebSocket.md#class",
+		"code_sample": "ws.OnClose:Connect(function()\n\tprint(\"Closed\")\nend)"
+	},
+
+	"@global/Drawing": {
+		"documentation": "The Drawing class provides an interface for drawing shapes and text above the game window.",
+		"keys": {
+			"new": "@global/Drawing.new",
+			"Fonts": "@global/Drawing.Fonts"
+		},
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md",
+		"code_sample": "local circle = Drawing.new(\"Circle\")\ncircle.Radius = 50\ncircle.Color = Color3.fromRGB(255, 0, 0)\ncircle.Filled = true\ncircle.Visible = true"
+	},
+	"@global/Drawing.new": {
+		"documentation": "Returns a new drawing object of the specified type.",
+		"params": [
+			{
+				"name": "type",
+				"documentation": "@global/Drawing.new/param/0"
+			}
+		],
+		"returns": [
+			{
+				"name": "Drawing",
+				"documentation": "@global/Drawing.new/return/0"
+			}
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#drawingnew",
+		"code_sample": "local circle = Drawing.new(\"Circle\")\ncircle.Radius = 50\ncircle.Visible = true"
+	},
+	"@global/Drawing.Fonts": {
+		"documentation": "A table containing the available font names. The style of each font varies depending on the executor.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#drawingfonts",
+		"code_sample": "for name, font in pairs(Drawing.Fonts) do\n\tlocal text = Drawing.new(\"Text\")\n\ttext.Text = \"The quick brown fox (\" .. name .. \")\"\n\ttext.Font = font\n\ttext.Size = 48\n\ttext.Position = Vector2.new(150, 100 + font * 50)\n\ttext.Visible = true\nend"
+	},
+	"@globaltype/BaseDrawing": {
+		"documentation": "The base class of which all drawing objects inherit. Cannot be instantiated.",
+		"keys": {
+			"Visible": "@globaltype/BaseDrawing.Visible",
+			"ZIndex": "@globaltype/BaseDrawing.ZIndex",
+			"Transparency": "@globaltype/BaseDrawing.Transparency",
+			"Color": "@globaltype/BaseDrawing.Color",
+			"Destroy": "@globaltype/BaseDrawing.Destroy"
+		},
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#basedrawing",
+		"code_sample": ""
+	},
+	"@globaltype/BaseDrawing.Visible": {
+		"documentation": "Whether the drawing is visible. Defaults to false on some executors.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#basedrawing",
+		"code_sample": ""
+	},
+	"@globaltype/BaseDrawing.ZIndex": {
+		"documentation": "Determines the order in which a Drawing renders relative to other drawings.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#basedrawing",
+		"code_sample": ""
+	},
+	"@globaltype/BaseDrawing.Transparency": {
+		"documentation": "The opacity of the drawing (1 is opaque, 0 is transparent).",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#basedrawing",
+		"code_sample": ""
+	},
+	"@globaltype/BaseDrawing.Color": {
+		"documentation": "The color of the drawing.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#basedrawing",
+		"code_sample": ""
+	},
+	"@globaltype/BaseDrawing.Destroy": {
+		"documentation": "Destroys the drawing.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#basedrawing",
+		"code_sample": ""
+	},
+	"@globaltype/Line": {
+		"documentation": "Renders a line starting at From and ending at To.",
+		"keys": {
+			"From": "@globaltype/Line.From",
+			"To": "@globaltype/Line.To",
+			"Thickness": "@globaltype/Line.Thickness",
+			"Visible": "@globaltype/BaseDrawing.Visible",
+			"ZIndex": "@globaltype/BaseDrawing.ZIndex",
+			"Transparency": "@globaltype/BaseDrawing.Transparency",
+			"Color": "@globaltype/BaseDrawing.Color",
+			"Destroy": "@globaltype/BaseDrawing.Destroy"
+		},
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#line",
+		"code_sample": ""
+	},
+	"@globaltype/Line.From": {
+		"documentation": "The starting point of the line.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#line",
+		"code_sample": ""
+	},
+	"@globaltype/Line.To": {
+		"documentation": "The ending point of the line.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#line",
+		"code_sample": ""
+	},
+	"@globaltype/Line.Thickness": {
+		"documentation": "The thickness of the line.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#line",
+		"code_sample": ""
+	},
+	"@globaltype/Text": {
+		"documentation": "Renders text at Position.",
+		"keys": {
+			"Text": "@globaltype/Text.Text",
+			"TextBounds": "@globaltype/Text.TextBounds",
+			"Font": "@globaltype/Text.Font",
+			"Size": "@globaltype/Text.Size",
+			"Position": "@globaltype/Text.Position",
+			"Center": "@globaltype/Text.Center",
+			"Outline": "@globaltype/Text.Outline",
+			"OutlineColor": "@globaltype/Text.OutlineColor",
+			"Visible": "@globaltype/BaseDrawing.Visible",
+			"ZIndex": "@globaltype/BaseDrawing.ZIndex",
+			"Transparency": "@globaltype/BaseDrawing.Transparency",
+			"Color": "@globaltype/BaseDrawing.Color",
+			"Destroy": "@globaltype/BaseDrawing.Destroy"
+		},
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#text",
+		"code_sample": ""
+	},
+	"@globaltype/Text.Text": {
+		"documentation": "The text to render.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#text",
+		"code_sample": ""
+	},
+	"@globaltype/Text.TextBounds": {
+		"documentation": "The size of the text. Cannot be set.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#text",
+		"code_sample": ""
+	},
+	"@globaltype/Text.Font": {
+		"documentation": "The font to use.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#text",
+		"code_sample": ""
+	},
+	"@globaltype/Text.Size": {
+		"documentation": "The size of the text.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#text",
+		"code_sample": ""
+	},
+	"@globaltype/Text.Position": {
+		"documentation": "The position of the text.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#text",
+		"code_sample": ""
+	},
+	"@globaltype/Text.Center": {
+		"documentation": "Whether the text should be centered horizontally.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#text",
+		"code_sample": ""
+	},
+	"@globaltype/Text.Outline": {
+		"documentation": "Whether the text should be outlined.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#text",
+		"code_sample": ""
+	},
+	"@globaltype/Text.OutlineColor": {
+		"documentation": "The color of the outline.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#text",
+		"code_sample": ""
+	},
+	"@globaltype/Image": {
+		"documentation": "Draws the image data to the screen. Data must be the raw image data.",
+		"keys": {
+			"Data": "@globaltype/Image.Data",
+			"Size": "@globaltype/Image.Size",
+			"Position": "@globaltype/Image.Position",
+			"Rounding": "@globaltype/Image.Rounding",
+			"Visible": "@globaltype/BaseDrawing.Visible",
+			"ZIndex": "@globaltype/BaseDrawing.ZIndex",
+			"Transparency": "@globaltype/BaseDrawing.Transparency",
+			"Color": "@globaltype/BaseDrawing.Color",
+			"Destroy": "@globaltype/BaseDrawing.Destroy"
+		},
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#image",
+		"code_sample": ""
+	},
+	"@globaltype/Image.Data": {
+		"documentation": "The raw image data.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#image",
+		"code_sample": ""
+	},
+	"@globaltype/Image.Size": {
+		"documentation": "The size of the image.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#image",
+		"code_sample": ""
+	},
+	"@globaltype/Image.Position": {
+		"documentation": "The position of the image.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#image",
+		"code_sample": ""
+	},
+	"@globaltype/Image.Rounding": {
+		"documentation": "The rounding of the image.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#image",
+		"code_sample": ""
+	},
+	"@globaltype/Circle": {
+		"documentation": "Draws a circle that is centered at Position.",
+		"keys": {
+			"NumSides": "@globaltype/Circle.NumSides",
+			"Radius": "@globaltype/Circle.Radius",
+			"Position": "@globaltype/Circle.Position",
+			"Thickness": "@globaltype/Circle.Thickness",
+			"Filled": "@globaltype/Circle.Filled",
+			"Visible": "@globaltype/BaseDrawing.Visible",
+			"ZIndex": "@globaltype/BaseDrawing.ZIndex",
+			"Transparency": "@globaltype/BaseDrawing.Transparency",
+			"Color": "@globaltype/BaseDrawing.Color",
+			"Destroy": "@globaltype/BaseDrawing.Destroy"
+		},
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#circle",
+		"code_sample": ""
+	},
+	"@globaltype/Circle.NumSides": {
+		"documentation": "The number of sides of the circle.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#circle",
+		"code_sample": ""
+	},
+	"@globaltype/Circle.Radius": {
+		"documentation": "The radius of the circle.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#circle",
+		"code_sample": ""
+	},
+	"@globaltype/Circle.Position": {
+		"documentation": "The position of the center of the circle.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#circle",
+		"code_sample": ""
+	},
+	"@globaltype/Circle.Thickness": {
+		"documentation": "If Filled is false, specifies the thickness of the outline.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#circle",
+		"code_sample": ""
+	},
+	"@globaltype/Circle.Filled": {
+		"documentation": "Whether the circle should be filled.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#circle",
+		"code_sample": ""
+	},
+	"@globaltype/Square": {
+		"documentation": "Draws a rectangle starting at Position and ending at Position + Size.",
+		"keys": {
+			"Size": "@globaltype/Square.Size",
+			"Position": "@globaltype/Square.Position",
+			"Thickness": "@globaltype/Square.Thickness",
+			"Filled": "@globaltype/Square.Filled",
+			"Visible": "@globaltype/BaseDrawing.Visible",
+			"ZIndex": "@globaltype/BaseDrawing.ZIndex",
+			"Transparency": "@globaltype/BaseDrawing.Transparency",
+			"Color": "@globaltype/BaseDrawing.Color",
+			"Destroy": "@globaltype/BaseDrawing.Destroy"
+		},
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#square",
+		"code_sample": ""
+	},
+	"@globaltype/Square.Size": {
+		"documentation": "The size of the square.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#square",
+		"code_sample": ""
+	},
+	"@globaltype/Square.Position": {
+		"documentation": "The position of the top-left corner of the square.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#square",
+		"code_sample": ""
+	},
+	"@globaltype/Square.Thickness": {
+		"documentation": "If Filled is false, specifies the thickness of the outline.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#square",
+		"code_sample": ""
+	},
+	"@globaltype/Square.Filled": {
+		"documentation": "Whether the square should be filled.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#square",
+		"code_sample": ""
+	},
+	"@globaltype/Quad": {
+		"documentation": "Draws a four-sided figure connecting to each of the four points.",
+		"keys": {
+			"PointA": "@globaltype/Quad.PointA",
+			"PointB": "@globaltype/Quad.PointB",
+			"PointC": "@globaltype/Quad.PointC",
+			"PointD": "@globaltype/Quad.PointD",
+			"Thickness": "@globaltype/Quad.Thickness",
+			"Filled": "@globaltype/Quad.Filled",
+			"Visible": "@globaltype/BaseDrawing.Visible",
+			"ZIndex": "@globaltype/BaseDrawing.ZIndex",
+			"Transparency": "@globaltype/BaseDrawing.Transparency",
+			"Color": "@globaltype/BaseDrawing.Color",
+			"Destroy": "@globaltype/BaseDrawing.Destroy"
+		},
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#quad",
+		"code_sample": ""
+	},
+	"@globaltype/Quad.PointA": {
+		"documentation": "The first point.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#quad",
+		"code_sample": ""
+	},
+	"@globaltype/Quad.PointB": {
+		"documentation": "The second point.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#quad",
+		"code_sample": ""
+	},
+	"@globaltype/Quad.PointC": {
+		"documentation": "The third point.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#quad",
+		"code_sample": ""
+	},
+	"@globaltype/Quad.PointD": {
+		"documentation": "The fourth point.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#quad",
+		"code_sample": ""
+	},
+	"@globaltype/Quad.Thickness": {
+		"documentation": "If Filled is false, specifies the thickness of the outline.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#quad",
+		"code_sample": ""
+	},
+	"@globaltype/Quad.Filled": {
+		"documentation": "Whether the quad should be filled.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#quad",
+		"code_sample": ""
+	},
+	"@globaltype/Triangle": {
+		"documentation": "Draws a triangle connecting to each of the three points.",
+		"keys": {
+			"PointA": "@globaltype/Triangle.PointA",
+			"PointB": "@globaltype/Triangle.PointB",
+			"PointC": "@globaltype/Triangle.PointC",
+			"Thickness": "@globaltype/Triangle.Thickness",
+			"Filled": "@globaltype/Triangle.Filled",
+			"Visible": "@globaltype/BaseDrawing.Visible",
+			"ZIndex": "@globaltype/BaseDrawing.ZIndex",
+			"Transparency": "@globaltype/BaseDrawing.Transparency",
+			"Color": "@globaltype/BaseDrawing.Color",
+			"Destroy": "@globaltype/BaseDrawing.Destroy"
+		},
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#triangle",
+		"code_sample": ""
+	},
+	"@globaltype/Triangle.PointA": {
+		"documentation": "The first point.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#triangle",
+		"code_sample": ""
+	},
+	"@globaltype/Triangle.PointB": {
+		"documentation": "The second point.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#triangle",
+		"code_sample": ""
+	},
+	"@globaltype/Triangle.PointC": {
+		"documentation": "The third point.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#triangle",
+		"code_sample": ""
+	},
+	"@globaltype/Triangle.Thickness": {
+		"documentation": "If Filled is false, specifies the thickness of the outline.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#triangle",
+		"code_sample": ""
+	},
+	"@globaltype/Triangle.Filled": {
+		"documentation": "Whether the triangle should be filled.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#triangle",
+		"code_sample": ""
+	},
+	"@global/cleardrawcache": {
+		"documentation": "Destroys every drawing object in the cache. Invalidates references to the drawing objects.",
+		"params": [],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#cleardrawcache",
+		"code_sample": "for i = 1, 10 do\n\tlocal circle = Drawing.new(\"Circle\")\n\tcircle.Radius = 50\n\tcircle.Color = Color3.fromRGB(255, 0, 0)\n\tcircle.Filled = true\n\tcircle.NumSides = 32\n\tcircle.Position = Vector2.new(math.random(300, 1200), math.random(300, 1200))\n\tcircle.Transparency = 0.7\n\tcircle.Visible = true\nend\n\ntask.wait(1)\ncleardrawcache()"
+	},
+	"@global/getrenderproperty": {
+		"documentation": "Gets the value of a property of a drawing. Functionally identical to drawing[property].",
+		"params": [
+			{
+				"name": "drawing",
+				"documentation": "@global/getrenderproperty/param/0"
+			},
+			{
+				"name": "property",
+				"documentation": "@global/getrenderproperty/param/1"
+			}
+		],
+		"returns": [
+			{
+				"name": "any",
+				"documentation": "@global/getrenderproperty/return/0"
+			}
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#getrenderproperty",
+		"code_sample": "local circle = Drawing.new(\"Circle\")\ngetrenderproperty(circle, \"Color\")"
+	},
+	"@global/isrenderobj": {
+		"documentation": "Returns whether the given object is a valid Drawing.",
+		"params": [
+			{
+				"name": "object",
+				"documentation": "@global/isrenderobj/param/0"
+			}
+		],
+		"returns": [
+			{
+				"name": "boolean",
+				"documentation": "@global/isrenderobj/return/0"
+			}
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#isrenderobj",
+		"code_sample": "print(isrenderobj(Drawing.new(\"Circle\"))) --> true\nprint(isrenderobj({})) --> false"
+	},
+	"@global/setrenderproperty": {
+		"documentation": "Sets the value of a property of a drawing. Functionally identical to drawing[property] = value.",
+		"params": [
+			{
+				"name": "drawing",
+				"documentation": "@global/setrenderproperty/param/0"
+			},
+			{
+				"name": "property",
+				"documentation": "@global/setrenderproperty/param/1"
+			},
+			{
+				"name": "value",
+				"documentation": "@global/setrenderproperty/param/2"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/Drawing.md#setrenderproperty",
+		"code_sample": "local circle = Drawing.new(\"Circle\")\nsetrenderproperty(circle, \"Color\", Color3.fromRGB(255, 0, 0))"
+	},
+	"@roblox/global/crypt.base64encode": {
+		"documentation": "Encodes a string of bytes into Base64.",
+		"params": [
+			{
+				"name": "data",
+				"documentation": "@roblox/global/crypt.base64encode/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/crypt.md#cryptbase64encode",
+		"code_sample": "local base64 = crypt.base64encode(\"Hello, World!\")\nlocal raw = crypt.base64decode(base64)\n\nprint(base64) --> SGVsbG8sIFdvcmxkIQ==\nprint(raw) --> Hello, World!"
+	},
+	"@roblox/global/crypt.base64decode": {
+		"documentation": "Decodes a Base64 string to a string of bytes.",
+		"params": [
+			{
+				"name": "data",
+				"documentation": "@roblox/global/crypt.base64decode/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/crypt.md#cryptbase64decode",
+		"code_sample": "local base64 = crypt.base64encode(\"Hello, World!\")\nlocal raw = crypt.base64decode(base64)\n\nprint(base64) --> SGVsbG8sIFdvcmxkIQ==\nprint(raw) --> Hello, World!"
+	},
+	"@roblox/global/crypt.encrypt": {
+		"documentation": "Encrypts an unencoded string using AES encryption. Returns the base64 encoded and encrypted string, and the IV. If an AES IV is not provided, a random one will be generated for you, and returned as a 2nd base64 encoded string. The cipher modes are 'CBC', 'ECB', 'CTR', 'CFB', 'OFB', and 'GCM'. The default is 'CBC'.",
+		"params": [
+			{
+				"name": "data",
+				"documentation": "@roblox/global/crypt.encrypt/param/0"
+			},
+			{
+				"name": "key",
+				"documentation": "@roblox/global/crypt.encrypt/param/1"
+			},
+			{
+				"name": "iv",
+				"documentation": "@roblox/global/crypt.encrypt/param/2"
+			},
+			{
+				"name": "mode",
+				"documentation": "@roblox/global/crypt.encrypt/param/3"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/crypt.md#cryptencrypt",
+		"code_sample": ""
+	},
+	"@roblox/global/crypt.decrypt": {
+		"documentation": "Decrypts the base64 encoded and encrypted content. Returns the raw string. The cipher modes are 'CBC', 'ECB', 'CTR', 'CFB', 'OFB', and 'GCM'.",
+		"params": [
+			{
+				"name": "data",
+				"documentation": "@roblox/global/crypt.decrypt/param/0"
+			},
+			{
+				"name": "key",
+				"documentation": "@roblox/global/crypt.decrypt/param/1"
+			},
+			{
+				"name": "iv",
+				"documentation": "@roblox/global/crypt.decrypt/param/2"
+			},
+			{
+				"name": "mode",
+				"documentation": "@roblox/global/crypt.decrypt/param/3"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/crypt.md#cryptdecrypt",
+		"code_sample": ""
+	},
+	"@roblox/global/crypt.generatebytes": {
+		"documentation": "Generates a random sequence of bytes of the given size. Returns the sequence as a base64 encoded string.",
+		"params": [
+			{
+				"name": "size",
+				"documentation": "@roblox/global/crypt.generatebytes/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/crypt.md#cryptgeneratebytes",
+		"code_sample": "local bytes = crypt.generatebytes(16)\nprint(bytes) --> bXlzcWwgYm9vbGVhbnM=\nprint(#crypt.base64decode(bytes)) --> 16"
+	},
+	"@roblox/global/crypt.generatekey": {
+		"documentation": "Generates a base64 encoded 256-bit key. The result can be used as the second parameter for the `crypt.encrypt` and `crypt.decrypt` functions.",
+		"params": [],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/crypt.md#cryptgeneratekey",
+		"code_sample": "local bytes = crypt.generatekey()\nprint(#crypt.base64decode(bytes)) --> 32 (256 bits)"
+	},
+	"@roblox/global/crypt.hash": {
+		"documentation": "Returns the result of hashing the data using the given algorithm. Some algorithms include 'sha1', 'sha384', 'sha512', 'md5', 'sha256', 'sha3-224', 'sha3-256', and 'sha3-512'.",
+		"params": [
+			{
+				"name": "data",
+				"documentation": "@roblox/global/crypt.hash/param/0"
+			},
+			{
+				"name": "algorithm",
+				"documentation": "@roblox/global/crypt.hash/param/1"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/crypt.md#crypthash",
+		"code_sample": "local hash = crypt.hash(\"Hello, World!\", \"md5\")\nprint(hash) --> 65A8E27D8879283831B664BD8B7F0AD4"
+	},
+	"@roblox/globaltype/crypt": {
+		"documentation": "The crypt library provides methods for the encryption and decryption of string data. Behavior and examples documented are based on Script-Ware.",
+		"keys": {
+			"base64encode": "@roblox/global/crypt.base64encode",
+			"base64decode": "@roblox/global/crypt.base64decode",
+			"encrypt": "@roblox/global/crypt.encrypt",
+			"decrypt": "@roblox/global/crypt.decrypt",
+			"generatebytes": "@roblox/global/crypt.generatebytes",
+			"generatekey": "@roblox/global/crypt.generatekey",
+			"hash": "@roblox/global/crypt.hash"
+		},
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/crypt.md",
+		"code_sample": ""
+	},
+	"@roblox/global/crypt.base64.encode": {
+		"documentation": "Alias for `crypt.base64encode`. Encodes a string of bytes into Base64.",
+		"params": [
+			{
+				"name": "data",
+				"documentation": "@roblox/global/crypt.base64.encode/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/crypt.md#cryptbase64encode",
+		"code_sample": ""
+	},
+	"@roblox/global/crypt.base64_encode": {
+		"documentation": "Alias for `crypt.base64encode`. Encodes a string of bytes into Base64.",
+		"params": [
+			{
+				"name": "data",
+				"documentation": "@roblox/global/crypt.base64_encode/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/crypt.md#cryptbase64encode",
+		"code_sample": ""
+	},
+	"@roblox/global/base64.encode": {
+		"documentation": "Alias for `crypt.base64encode`. Encodes a string of bytes into Base64.",
+		"params": [
+			{
+				"name": "data",
+				"documentation": "@roblox/global/base64.encode/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/crypt.md#cryptbase64encode",
+		"code_sample": ""
+	},
+	"@roblox/global/base64_encode": {
+		"documentation": "Alias for `crypt.base64encode`. Encodes a string of bytes into Base64.",
+		"params": [
+			{
+				"name": "data",
+				"documentation": "@roblox/global/base64_encode/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/crypt.md#cryptbase64encode",
+		"code_sample": ""
+	},
+	"@roblox/global/crypt.base64.decode": {
+		"documentation": "Alias for `crypt.base64decode`. Decodes a Base64 string to a string of bytes.",
+		"params": [
+			{
+				"name": "data",
+				"documentation": "@roblox/global/crypt.base64.decode/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/crypt.md#cryptbase64decode",
+		"code_sample": ""
+	},
+	"@roblox/global/crypt.base64_decode": {
+		"documentation": "Alias for `crypt.base64decode`. Decodes a Base64 string to a string of bytes.",
+		"params": [
+			{
+				"name": "data",
+				"documentation": "@roblox/global/crypt.base64_decode/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/crypt.md#cryptbase64decode",
+		"code_sample": ""
+	},
+	"@roblox/global/base64.decode": {
+		"documentation": "Alias for `crypt.base64decode`. Decodes a Base64 string to a string of bytes.",
+		"params": [
+			{
+				"name": "data",
+				"documentation": "@roblox/global/base64.decode/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/crypt.md#cryptbase64decode",
+		"code_sample": ""
+	},
+	"@roblox/global/base64_decode": {
+		"documentation": "Alias for `crypt.base64decode`. Decodes a Base64 string to a string of bytes.",
+		"params": [
+			{
+				"name": "data",
+				"documentation": "@roblox/global/base64_decode/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/crypt.md#cryptbase64decode",
+		"code_sample": ""
+	},
+
+	"@roblox/global/debug": {
+		"documentation": "The debug library is an extension of the Luau debug library, providing greater control over Luau functions.",
+		"keys": {
+			"getconstant": "@roblox/global/debug.getconstant",
+			"getconstants": "@roblox/global/debug.getconstants",
+			"getinfo": "@roblox/global/debug.getinfo",
+			"getproto": "@roblox/global/debug.getproto",
+			"getprotos": "@roblox/global/debug.getprotos",
+			"getstack": "@roblox/global/debug.getstack",
+			"getupvalue": "@roblox/global/debug.getupvalue",
+			"getupvalues": "@roblox/global/debug.getupvalues",
+			"setconstant": "@roblox/global/debug.setconstant",
+			"setstack": "@roblox/global/debug.setstack",
+			"setupvalue": "@roblox/global/debug.setupvalue"
+		},
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug",
+		"code_sample": ""
+	},
+	"@roblox/global/debug.getconstant": {
+		"documentation": "Returns the constant at `index` in the constant table of the function or level `func`. Throws an error if the constant does not exist.",
+		"params": [
+			{
+				"name": "func",
+				"documentation": "@roblox/global/debug.getconstant/param/0"
+			},
+			{
+				"name": "index",
+				"documentation": "@roblox/global/debug.getconstant/param/1"
+			}
+		],
+		"returns": [
+			{
+				"documentation": "@roblox/global/debug.getconstant/return"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getconstant",
+		"code_sample": "local function foo()\n    print(\"Hello, world!\")\nend\n\nprint(debug.getconstant(foo, 1)) --> \"print\"\nprint(debug.getconstant(foo, 2)) --> nil\nprint(debug.getconstant(foo, 3)) --> \"Hello, world!\""
+	},
+	"@roblox/global/debug.getconstants": {
+		"documentation": "Returns the constant table of the function or level `func`. Traversing the table with `ipairs` is not recommended, as constants can be nil or skipped entirely.",
+		"params": [
+			{
+				"name": "func",
+				"documentation": "@roblox/global/debug.getconstants/param/0"
+			}
+		],
+		"returns": [
+			{
+				"documentation": "@roblox/global/debug.getconstants/return"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getconstants",
+		"code_sample": "local function foo()\n    local num = 5000 .. 50000\n    print(\"Hello, world!\", num, warn)\nend\n\nfor i, v in pairs(debug.getconstants(foo)) do\n    print(i, v)\nend\n--> 1 50000\n--> 2 \"print\"\n--> 4 \"Hello, world!\"\n--> 5 \"warn\""
+	},
+	"@roblox/global/debug.getinfo": {
+		"documentation": "Returns debugger information about a function or stack level. Some executors are missing certain fields.",
+		"params": [
+			{
+				"name": "func",
+				"documentation": "@roblox/global/debug.getinfo/param/0"
+			}
+		],
+		"returns": [
+			{
+				"documentation": "@roblox/globaltype/DebugInfo"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getinfo",
+		"code_sample": "local function foo()\n    print(\"Hello, world!\")\nend\n\nfor k, v in pairs(debug.getinfo(foo)) do\n    print(k, v, \"(\" .. type(v) .. \")\")\nend"
+	},
+	"@roblox/globaltype/DebugInfo": {
+		"documentation": "A table containing information about a function or stack level, returned by `debug.getinfo`.",
+		"keys": {
+			"source": "@roblox/globaltype/DebugInfo.source",
+			"short_src": "@roblox/globaltype/DebugInfo.short_src",
+			"func": "@roblox/globaltype/DebugInfo.func",
+			"what": "@roblox/globaltype/DebugInfo.what",
+			"currentline": "@roblox/globaltype/DebugInfo.currentline",
+			"name": "@roblox/globaltype/DebugInfo.name",
+			"nups": "@roblox/globaltype/DebugInfo.nups",
+			"numparams": "@roblox/globaltype/DebugInfo.numparams",
+			"is_vararg": "@roblox/globaltype/DebugInfo.is_vararg"
+		},
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getinfo",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/DebugInfo.source": {
+		"documentation": "The name of the chunk that created the function.",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getinfo",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/DebugInfo.short_src": {
+		"documentation": "A 'printable' version of source to be used in error messages.",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getinfo",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/DebugInfo.func": {
+		"documentation": "The function itself.",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getinfo",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/DebugInfo.what": {
+		"documentation": "The string 'Lua' if the function is a Luau function, or 'C' if it is a C function.",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getinfo",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/DebugInfo.currentline": {
+		"documentation": "The current line where the given function is executing. When no line information is available, currentline is set to -1.",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getinfo",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/DebugInfo.name": {
+		"documentation": "The name of the function. If it cannot find a name, then name is a blank string.",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getinfo",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/DebugInfo.nups": {
+		"documentation": "The number of upvalues in the function.",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getinfo",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/DebugInfo.numparams": {
+		"documentation": "The number of parameters in the function (always 0 for C functions).",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getinfo",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/DebugInfo.is_vararg": {
+		"documentation": "Whether the function has a variadic argument (1 if it does, 0 if it does not).",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getinfo",
+		"code_sample": ""
+	},
+	"@roblox/global/debug.getproto": {
+		"documentation": "Returns the proto at `index` in the function or level `func` if `active` is false. If `active` is true, then every active function of the proto is returned. In some executors, the proto is non-functional if `active` is false. Debug information is preserved.",
+		"params": [
+			{
+				"name": "func",
+				"documentation": "@roblox/global/debug.getproto/param/0"
+			},
+			{
+				"name": "index",
+				"documentation": "@roblox/global/debug.getproto/param/1"
+			},
+			{
+				"name": "active",
+				"documentation": "@roblox/global/debug.getproto/param/2"
+			}
+		],
+		"returns": [
+			{
+				"documentation": "@roblox/global/debug.getproto/return"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getproto",
+		"code_sample": "local function myFunction()\n    local function proto()\n        print(\"Hello, world!\")\n    end\nend\n\nlocal proto = debug.getproto(myFunction, 1, true)[1]\nproto() --> Hello, world!"
+	},
+	"@roblox/global/debug.getprotos": {
+		"documentation": "Returns a list of protos of the function or level `func`. In some executors, the proto is non-functional, but debug information is preserved.",
+		"params": [
+			{
+				"name": "func",
+				"documentation": "@roblox/global/debug.getprotos/param/0"
+			}
+		],
+		"returns": [
+			{
+				"documentation": "@roblox/global/debug.getprotos/return"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getprotos",
+		"code_sample": "local function myFunction()\n    local function _1()\n        print(\"Hello,\")\n    end\n    local function _2()\n        print(\"world!\")\n    end\nend\n\nfor i in ipairs(debug.getprotos(myFunction)) do\n    local proto = debug.getproto(myFunction, i, true)[1]\n    proto()\nend\n--> Hello,\n--> world!"
+	},
+	"@roblox/global/debug.getstack": {
+		"documentation": "Returns the value at `index` in the stack frame `level`. Throws an error if no value could be found. If `index` is not specified, then the entire stack frame is returned.",
+		"params": [
+			{
+				"name": "level",
+				"documentation": "@roblox/global/debug.getstack/param/0"
+			},
+			{
+				"name": "index",
+				"documentation": "@roblox/global/debug.getstack/param/1"
+			}
+		],
+		"returns": [
+			{
+				"documentation": "@roblox/global/debug.getstack/return"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getstack",
+		"code_sample": "local _ = \"a\" .. \"b\"\nprint(debug.getstack(1, 1)) --> ab\n\nlocal _ = \"a\" .. \"b\"\ntable.foreach(debug.getstack(1), print)\n--> ab\n--> table.foreach()\n--> debug.getstack()\n--> 1"
+	},
+	"@roblox/global/debug.getupvalue": {
+		"documentation": "Returns the upvalue at `index` in the function or level `func`. Throws an error if the upvalue does not exist. An upvalue is a local variable used by an inner function. Some Luau optimizations automatically inline certain constants like strings and integers; they can be retrieved through `debug.getconstant` instead.",
+		"params": [
+			{
+				"name": "func",
+				"documentation": "@roblox/global/debug.getupvalue/param/0"
+			},
+			{
+				"name": "index",
+				"documentation": "@roblox/global/debug.getupvalue/param/1"
+			}
+		],
+		"returns": [
+			{
+				"documentation": "@roblox/global/debug.getupvalue/return"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getupvalue",
+		"code_sample": "local upvalue = function ()\nend\n\nlocal function foo()\n    print(upvalue)\nend\n\nprint(debug.getupvalue(foo, 1)) --> upvalue"
+	},
+	"@roblox/global/debug.getupvalues": {
+		"documentation": "Returns a list of upvalues of the function or level `func`. Traversing the table with `ipairs` is not recommended, as upvalues can be nil or skipped entirely.",
+		"params": [
+			{
+				"name": "func",
+				"documentation": "@roblox/global/debug.getupvalues/param/0"
+			}
+		],
+		"returns": [
+			{
+				"documentation": "@roblox/global/debug.getupvalues/return"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#getupvalues",
+		"code_sample": "local upvalue1, upvalue2 = function () end, function () end\n\nlocal function foo()\n    print(upvalue1, upvalue2)\nend\n\nfor k, v in pairs(debug.getupvalues(foo)) do\n    print(k, v, \"(\" .. type(v) .. \")\")\nend\n--> 1 upvalue1() (function)\n--> 2 upvalue2() (function)"
+	},
+	"@roblox/global/debug.setconstant": {
+		"documentation": "Sets the constant at `index` in the function or level `func` to `value`. The type of `value` must match the type of the constant at `index`.",
+		"params": [
+			{
+				"name": "func",
+				"documentation": "@roblox/global/debug.setconstant/param/0"
+			},
+			{
+				"name": "index",
+				"documentation": "@roblox/global/debug.setconstant/param/1"
+			},
+			{
+				"name": "value",
+				"documentation": "@roblox/global/debug.setconstant/param/2"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#setconstant",
+		"code_sample": "local function foo()\n    print(\"Goodbye, world!\")\nend\n\ndebug.setconstant(foo, 3, \"Hello, world!\")\nfoo() --> Hello, world!"
+	},
+	"@roblox/global/debug.setstack": {
+		"documentation": "Sets the register at `index` in the stack frame `level` to `value`. The type of `value` must match the type of the register at `index`.",
+		"params": [
+			{
+				"name": "level",
+				"documentation": "@roblox/global/debug.setstack/param/0"
+			},
+			{
+				"name": "index",
+				"documentation": "@roblox/global/debug.setstack/param/1"
+			},
+			{
+				"name": "value",
+				"documentation": "@roblox/global/debug.setstack/param/2"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#setstack",
+		"code_sample": "local function foo()\n    -- Change the first value from \"Goodbye, world!\" to \"Hello, world!\"\n    return \"Goodbye, world!\", debug.setstack(1, 1, \"Hello, world!\")\nend\n\nprint(foo()) --> Hello, world!"
+	},
+	"@roblox/global/debug.setupvalue": {
+		"documentation": "Sets the upvalue at `index` in the function or level `func` to `value`.",
+		"params": [
+			{
+				"name": "func",
+				"documentation": "@roblox/global/debug.setupvalue/param/0"
+			},
+			{
+				"name": "index",
+				"documentation": "@roblox/global/debug.setupvalue/param/1"
+			},
+			{
+				"name": "value",
+				"documentation": "@roblox/global/debug.setupvalue/param/2"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/libraries/debug#setupvalue",
+		"code_sample": "local function somethingImportant()\n    print(\"Goodbye, world!\")\nend\n\nlocal function foo()\n    somethingImportant()\nend\n\ndebug.setupvalue(foo, 1, function ()\n    print(\"Hello, world!\")\nend)\n\nfoo() --> Hello, world!"
+	},
+	"@unc/global/readfile": {
+		"documentation": "Returns the contents of the file located at `path`.",
+		"params": [
+			{
+				"name": "path",
+				"documentation": "@unc/global/readfile/param/0"
+			}
+		],
+		"returns": ["string"],
+		"learn_more_link": "",
+		"code_sample": "writefile(\"file.txt\", \"Hello, world!\")\nprint(readfile(\"file.txt\")) --> Hello, world!"
+	},
+	"@unc/global/listfiles": {
+		"documentation": "Returns a list of files and folders in the folder located at `path`. The returned list contains whole paths.",
+		"params": [
+			{
+				"name": "path",
+				"documentation": "@unc/global/listfiles/param/0"
+			}
+		],
+		"returns": ["{string}"],
+		"learn_more_link": "",
+		"code_sample": "local function descend(path, level)\n    level = level or 0\n    for _, file in ipairs(listfiles(path)) do\n        print(string.rep(\"  \", level) .. file)\n        if isfolder(file) then\n            descend(file, level + 1)\n        end\n    end\nend\n\ndescend(\".\")"
+	},
+	"@unc/global/writefile": {
+		"documentation": "Writes `data` to the file located at `path` if it is not a folder.",
+		"params": [
+			{
+				"name": "path",
+				"documentation": "@unc/global/writefile/param/0"
+			},
+			{
+				"name": "data",
+				"documentation": "@unc/global/writefile/param/1"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "",
+		"code_sample": "writefile(\"file.txt\", \"Hello, world!\")\nprint(readfile(\"file.txt\")) --> Hello, world!"
+	},
+	"@unc/global/makefolder": {
+		"documentation": "Creates a folder at `path` if it does not already exist.",
+		"params": [
+			{
+				"name": "path",
+				"documentation": "@unc/global/makefolder/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "",
+		"code_sample": "makefolder(\"folder\")\nwritefile(\"folder/file.txt\", \"Hello, world!\")\nprint(readfile(\"folder/file.txt\")) --> Hello, world!"
+	},
+	"@unc/global/appendfile": {
+		"documentation": "Appends `data` to the end of the file located at `path`. Creates the file if it does not exist.",
+		"params": [
+			{
+				"name": "path",
+				"documentation": "@unc/global/appendfile/param/0"
+			},
+			{
+				"name": "data",
+				"documentation": "@unc/global/appendfile/param/1"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "",
+		"code_sample": "writefile(\"services.txt\", \"A list of services:\\n\")\n\nfor _, service in ipairs(game:GetChildren()) do\n    if service.ClassName ~= \"\" then\n        appendfile(\"services.txt\", service.ClassName .. \"\\n\")\n    end\nend"
+	},
+	"@unc/global/isfile": {
+		"documentation": "Returns whether or not `path` points to a file.",
+		"params": [
+			{
+				"name": "path",
+				"documentation": "@unc/global/isfile/param/0"
+			}
+		],
+		"returns": ["boolean"],
+		"learn_more_link": "",
+		"code_sample": "writefile(\"file.txt\", \"Hello, world!\")\nprint(isfile(\"file.txt\")) --> true"
+	},
+	"@unc/global/isfolder": {
+		"documentation": "Returns whether or not `path` points to a folder.",
+		"params": [
+			{
+				"name": "path",
+				"documentation": "@unc/global/isfolder/param/0"
+			}
+		],
+		"returns": ["boolean"],
+		"learn_more_link": "",
+		"code_sample": "makefolder(\"folder\")\nprint(isfolder(\"folder\")) --> true"
+	},
+	"@unc/global/delfile": {
+		"documentation": "Removes the file located at `path`.",
+		"params": [
+			{
+				"name": "path",
+				"documentation": "@unc/global/delfile/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "",
+		"code_sample": "writefile(\"file.txt\", \"Hello, world!\")\nprint(isfile(\"file.txt\")) --> true\n\ndelfile(\"file.txt\")\nprint(isfile(\"file.txt\")) --> false"
+	},
+	"@unc/global/delfolder": {
+		"documentation": "Removes the folder located at `path`.",
+		"params": [
+			{
+				"name": "path",
+				"documentation": "@unc/global/delfolder/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "",
+		"code_sample": "makefolder(\"folder\")\nprint(isfolder(\"folder\")) --> true\n\ndelfolder(\"folder\")\nprint(isfolder(\"folder\")) --> false"
+	},
+	"@unc/global/loadfile": {
+		"documentation": "Generates a chunk from the file located at `path`. The environment of the returned function is the global environment. If there are no compilation errors, the chunk is returned by itself; otherwise, it returns nil plus the error message. `chunkname` is used as the chunk name for error messages and debug information. When absent, it defaults to a random string.",
+		"params": [
+			{
+				"name": "path",
+				"documentation": "@unc/global/loadfile/param/0"
+			},
+			{
+				"name": "chunkname",
+				"documentation": "@unc/global/loadfile/param/1"
+			}
+		],
+		"returns": ["(function?)", "(string?)"],
+		"learn_more_link": "",
+		"code_sample": "writefile(\"file.lua\", \"local number = ...; return number + 1\")\nlocal func, err = loadfile(\"file.lua\")\nlocal output = assert(func, err)(1)\nprint(output) --> 2"
+	},
+	"@unc/global/dofile": {
+		"documentation": "Attempts to load the file located at `path` and execute it on a new thread. <b>Note:</b> Some executors may provide the file name to the top-level vararg of the file (`...`).",
+		"params": [
+			{
+				"name": "path",
+				"documentation": "@unc/global/dofile/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "",
+		"code_sample": "writefile(\"code.lua\", \"print('Hello, world!')\")\ndofile(\"code.lua\") --> \"Hello, world!\""
+	},
+	"@roblox/global/isrbxactive": {
+		"documentation": "Returns whether the game's window is in focus. Must be true for other input functions to work.",
+		"params": [],
+		"returns": [
+			{
+				"type": "boolean",
+				"documentation": "True if the game window is in focus."
+			}
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/input.md#function-isrbxactive",
+		"code_sample": "if isrbxactive() then\n    mouse1click()\nend"
+	},
+	"@r/global/mouse1click": {
+		"documentation": "Dispatches a left mouse button click.",
+		"params": [],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/input.md#function-mouse1click",
+		"code_sample": ""
+	},
+	"@roblox/global/mouse1press": {
+		"documentation": "Dispatches a left mouse button press.",
+		"params": [],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/input.md#function-mouse1press",
+		"code_sample": ""
+	},
+	"@roblox/global/mouse1release": {
+		"documentation": "Dispatches a left mouse button release.",
+		"params": [],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/input.md#function-mouse1release",
+		"code_sample": ""
+	},
+	"@roblox/global/mouse2click": {
+		"documentation": "Dispatches a right mouse button click.",
+		"params": [],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/input.md#function-mouse2click",
+		"code_sample": ""
+	},
+	"@roblox/global/mouse2press": {
+		"documentation": "Dispatches a right mouse button press.",
+		"params": [],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/input.md#function-mouse2press",
+		"code_sample": ""
+	},
+	"@roblox/global/mouse2release": {
+		"documentation": "Dispatches a right mouse button release.",
+		"params": [],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/input.md#function-mouse2release",
+		"code_sample": ""
+	},
+	"@roblox/global/mousemoveabs": {
+		"documentation": "Moves the mouse cursor to the specified absolute position.",
+		"params": [
+			{
+				"name": "x",
+				"documentation": "@roblox/global/mousemoveabs/param/0",
+				"type": "number"
+			},
+			{
+				"name": "y",
+				"documentation": "@roblox/global/mousemoveabs/param/1",
+				"type": "number"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/input.md#function-mousemoveabs",
+		"code_sample": "-- Wait for the game window to be selected\nwhile not isrbxactive() do\n    task.wait()\nend\n\nlocal size = workspace.CurrentCamera.ViewportSize\n\nfor i = 0, 50 do\n    local x = math.sin(i / 50 * math.pi * 2) / 2 + 0.5\n    local y = math.cos(i / 50 * math.pi * 2) / 2 + 0.5\n    mousemoveabs(x * size.X, y * size.Y)\n    task.wait(0.05)\nend"
+	},
+	"@roblox/global/mousemoverel": {
+		"documentation": "Adjusts the mouse cursor by the specified relative amount.",
+		"params": [
+			{
+				"name": "x",
+				"documentation": "@roblox/global/mousemoverel/param/0",
+				"type": "number"
+			},
+			{
+				"name": "y",
+				"documentation": "@roblox/global/mousemoverel/param/1",
+				"type": "number"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/input.md#function-mousemoverel",
+		"code_sample": "-- Wait for the game window to be selected\nwhile not isrbxactive() do\n    task.wait()\nend\n\nfor i = 0, 20 do\n    local x = math.sin(i / 20 * math.pi * 2)\n    local y = math.cos(i / 20 * math.pi * 2)\n    mousemoverel(x * 100, y * 100)\n    task.wait(0.05)\nend"
+	},
+	"@roblox/global/mousescroll": {
+		"documentation": "Dispatches a mouse scroll by the specified number of pixels.",
+		"params": [
+			{
+				"name": "pixels",
+				"documentation": "@roblox/global/mousescroll/param/0",
+				"type": "number"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/input.md#function-mousescroll",
+		"code_sample": ""
+	},
+
+	"@roblox/global/fireclickdetector": {
+		"documentation": "Dispatches a click or hover event to the given `ClickDetector`. When absent, `distance` defaults to zero, and `event` defaults to `\"MouseClick\"`. Possible input events include 'MouseClick', 'RightMouseClick', 'MouseHoverEnter', and 'MouseHoverLeave'.",
+		"params": [
+			{
+				"name": "object",
+				"documentation": "@roblox/global/fireclickdetector/param/0"
+			},
+			{
+				"name": "distance",
+				"documentation": "@roblox/global/fireclickdetector/param/1"
+			},
+			{
+				"name": "event",
+				"documentation": "@roblox/global/fireclickdetector/param/2"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/datatypes/ClickDetector",
+		"code_sample": ""
+	},
+	"@roblox/global/getcallbackvalue": {
+		"documentation": "Returns the function assigned to a callback property of `object`, which cannot be indexed normally.",
+		"params": [
+			{
+				"name": "object",
+				"documentation": "@roblox/global/getcallbackvalue/param/0"
+			},
+			{
+				"name": "property",
+				"documentation": "@roblox/global/getcallbackvalue/param/1"
+			}
+		],
+		"returns": [
+			{
+				"name": "",
+				"documentation": "function?"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/datatypes/BindableFunction",
+		"code_sample": ""
+	},
+	"@roblox/global/getconnections": {
+		"documentation": "Creates a list of Connection objects for the functions connected to `signal`.",
+		"params": [
+			{
+				"name": "signal",
+				"documentation": "@roblox/global/getconnections/param/0"
+			}
+		],
+		"returns": [
+			{
+				"name": "",
+				"documentation": "{Connection}"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptConnection",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/Connection": {
+		"documentation": "An object representing a connection to a Roblox signal, returned by `getconnections`.",
+		"keys": {
+			"Enabled": "@roblox/globaltype/Connection.Enabled",
+			"ForeignState": "@roblox/globaltype/Connection.ForeignState",
+			"LuaConnection": "@roblox/globaltype/Connection.LuaConnection",
+			"Function": "@roblox/globaltype/Connection.Function",
+			"Thread": "@roblox/globaltype/Connection.Thread",
+			"Fire": "@roblox/globaltype/Connection.Fire",
+			"Defer": "@roblox/globaltype/Connection.Defer",
+			"Disconnect": "@roblox/globaltype/Connection.Disconnect",
+			"Disable": "@roblox/globaltype/Connection.Disable",
+			"Enable": "@roblox/globaltype/Connection.Enable"
+		},
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptConnection",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/Connection.Enabled": {
+		"documentation": "A boolean indicating whether the connection can receive events.",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptConnection#Enabled",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/Connection.ForeignState": {
+		"documentation": "A boolean indicating whether the function was connected by a foreign Luau state (i.e., CoreScripts).",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptConnection",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/Connection.LuaConnection": {
+		"documentation": "A boolean indicating whether the connection was created in Luau code.",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptConnection",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/Connection.Function": {
+		"documentation": "The function bound to this connection. Nil when `ForeignState` is true.",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptConnection",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/Connection.Thread": {
+		"documentation": "The thread that created the connection. Nil when `ForeignState` is true.",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptConnection",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/Connection.Fire": {
+		"documentation": "Fires this connection with the provided arguments.",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptConnection",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/Connection.Defer": {
+		"documentation": "Defers an event to connection with the provided arguments.",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptConnection",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/Connection.Disconnect": {
+		"documentation": "Disconnects the connection.",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptConnection#Disconnect",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/Connection.Disable": {
+		"documentation": "Prevents the connection from firing.",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptConnection#Disable",
+		"code_sample": ""
+	},
+	"@roblox/globaltype/Connection.Enable": {
+		"documentation": "Allows the connection to fire if it was previously disabled.",
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptConnection#Enable",
+		"code_sample": ""
+	},
+	"@roblox/global/getcustomasset": {
+		"documentation": "Returns `rbxasset://` content id for the asset located at `path`, allowing you to use unmoderated assets. Internally, files are copied to the game's content directory. If `noCache` is false, the file will be cached, allowing subsequent calls to return the same content id.",
+		"params": [
+			{
+				"name": "path",
+				"documentation": "@roblox/global/getcustomasset/param/0"
+			},
+			{
+				"name": "noCache",
+				"documentation": "@roblox/global/getcustomasset/param/1"
+			}
+		],
+		"returns": [
+			{
+				"name": "",
+				"documentation": "string"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/classes/ContentProvider",
+		"code_sample": ""
+	},
+	"@roblox/global/gethiddenproperty": {
+		"documentation": "Returns the value of a hidden property of `object`, which cannot be indexed normally. If the property is hidden, the second return value will be `true`. Otherwise, it will be `false`.",
+		"params": [
+			{
+				"name": "object",
+				"documentation": "@roblox/global/gethiddenproperty/param/0"
+			},
+			{
+				"name": "property",
+				"documentation": "@roblox/global/gethiddenproperty/param/1"
+			}
+		],
+		"returns": [
+			{
+				"name": "",
+				"documentation": "any, boolean"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/classes/Instance",
+		"code_sample": ""
+	},
+	"@roblox/global/gethui": {
+		"documentation": "Returns a hidden GUI container. Should be used as an alternative to CoreGui and PlayerGui. GUI objects parented to this container will be protected from common detection methods.",
+		"params": [],
+		"returns": [
+			{
+				"name": "",
+				"documentation": "Folder"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/classes/PlayerGui",
+		"code_sample": ""
+	},
+	"@roblox/global/getinstances": {
+		"documentation": "Returns a list of every Instance referenced on the client.",
+		"params": [],
+		"returns": [
+			{
+				"name": "",
+				"documentation": "{Instance}"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/classes/Instance",
+		"code_sample": ""
+	},
+	"@roblox/global/getnilinstances": {
+		"documentation": "Like `getinstances`, but only includes Instances that are not descendants of a service provider.",
+		"params": [],
+		"returns": [
+			{
+				"name": "",
+				"documentation": "{Instance}"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/classes/Instance",
+		"code_sample": ""
+	},
+	"@roblox/global/isscriptable": {
+		"documentation": "Returns whether the given property is scriptable (does not have the `notscriptable` tag). If `true`, the property is scriptable and can be indexed normally. If `nil`, the property does not exist.",
+		"params": [
+			{
+				"name": "object",
+				"documentation": "@roblox/global/isscriptable/param/0"
+			},
+			{
+				"name": "property",
+				"documentation": "@roblox/global/isscriptable/param/1"
+			}
+		],
+		"returns": [
+			{
+				"name": "",
+				"documentation": "boolean"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/classes/Instance",
+		"code_sample": ""
+	},
+	"@roblox/global/sethiddenproperty": {
+		"documentation": "Sets the value of a hidden property of `object`, which cannot be set normally. Returns whether the property was hidden.",
+		"params": [
+			{
+				"name": "object",
+				"documentation": "@roblox/global/sethiddenproperty/param/0"
+			},
+			{
+				"name": "property",
+				"documentation": "@roblox/global/sethiddenproperty/param/1"
+			},
+			{
+				"name": "value",
+				"documentation": "@roblox/global/sethiddenproperty/param/2"
+			}
+		],
+		"returns": [
+			{
+				"name": "",
+				"documentation": "boolean"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/classes/Instance",
+		"code_sample": ""
+	},
+	"@roblox/global/setrbxclipboard": {
+		"documentation": "Sets the Studio client's clipboard to the given `rbxm` or `rbxmx` model data. This allows data from the game to be copied into a Studio client.",
+		"params": [
+			{
+				"name": "data",
+				"documentation": "@roblox/global/setrbxclipboard/param/0"
+			}
+		],
+		"returns": [
+			{
+				"name": "",
+				"documentation": "boolean"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/studio/clipboard",
+		"code_sample": ""
+	},
+	"@roblox/global/setscriptable": {
+		"documentation": "Sets whether the given property is scriptable. Returns whether the property was scriptable prior to changing it.",
+		"params": [
+			{
+				"name": "object",
+				"documentation": "@roblox/global/setscriptable/param/0"
+			},
+			{
+				"name": "property",
+				"documentation": "@roblox/global/setscriptable/param/1"
+			},
+			{
+				"name": "value",
+				"documentation": "@roblox/global/setscriptable/param/2"
+			}
+		],
+		"returns": [
+			{
+				"name": "",
+				"documentation": "boolean"
+			}
+		],
+		"learn_more_link": "https://create.roblox.com/docs/reference/engine/classes/Instance",
+		"code_sample": ""
+	},
+	"@roblox/global/checkcaller": {
+		"documentation": "Returns `true` if the function currently running was called by the executor. This is useful for metamethod hooks that behave differently when called by the game.",
+		"params": [],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/closures.md#checkcaller",
+		"code_sample": "local refs = {}\n\nrefs.__namecall = hookmetamethod(game, \"__namecall\", function(...)\n\tlocal self = ...\n\tlocal isRunningOnExecutor = checkcaller()\n\n\tif isRunningOnExecutor then\n\t\tif self == game then\n\t\t\terror(\"No __namecall on game allowed\")\n\t\tend\n\tend\n\n\treturn refs.__namecall(...)\nend)\n\ngame:Destroy() --> Error \"No __namecall on game allowed\""
+	},
+	"@roblox/global/clonefunction": {
+		"documentation": "Generates a new closure based on the bytecode of function `func`.",
+		"params": [
+			{
+				"name": "func",
+				"documentation": "@roblox/global/clonefunction/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/closures.md#clonefunction",
+		"code_sample": "local function foo()\n\tprint(\"Hello, world!\")\nend\n\nlocal bar = clonefunction(foo)\n\nfoo() --> Hello, world!\nbar() --> Hello, world!\nprint(foo == bar) --> false"
+	},
+	"@roblox/global/getcallingscript": {
+		"documentation": "Returns the script (`BaseScript`) responsible for the currently running function.",
+		"params": [],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/closures.md#getcallingscript",
+		"code_sample": "local refs = {}\nlocal bannedScripts = game:GetService(\"Players\").LocalPlayer.PlayerGui\n\nrefs.__namecall = hookmetamethod(game, \"__namecall\", function(...)\n\tlocal caller = getcallingscript()\n\n\tlocal isBanned = caller.IsDescendantOf(caller, bannedScripts)\n\n\tif isBanned then\n\t\terror(\"Not allowed to invoke __namecall\")\n\tend\n\n\treturn refs.__namecall(...)\nend)"
+	},
+	"@roblox/global/hookfunction": {
+		"documentation": "Replaces `func` internally with `hook`, where `hook` will be invoked in place of `func` when called. Returns a new function that can be used to access the original definition of `func`.<br><br>⚠️ <b>Warning:</b> If `func` is a Luau function (`islclosure(func) == true`), the upvalue count of `hook` must be less than or equal to that of `func`.",
+		"params": [
+			{
+				"name": "func",
+				"documentation": "@roblox/global/hookfunction/param/0"
+			},
+			{
+				"name": "hook",
+				"documentation": "@roblox/global/hookfunction/param/1"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/closures.md#hookfunction",
+		"code_sample": "local function foo()\n\tprint(\"Hello, world!\")\nend\n\nlocal fooRef = hookfunction(foo, function(...)\n\tprint(\"Hooked!\")\nend)\n\nfoo() --> Hooked!\nfooRef() --> Hello, world!"
+	},
+	"@roblox/global/iscclosure": {
+		"documentation": "Returns whether or not `func` is a closure whose source is written in C.",
+		"params": [
+			{
+				"name": "func",
+				"documentation": "@roblox/global/iscclosure/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/closures.md#iscclosure",
+		"code_sample": "print(iscclosure(print)) --> true\nprint(iscclosure(function() end)) --> false"
+	},
+	"@roblox/global/islclosure": {
+		"documentation": "Returns whether or not `func` is a closure whose source is written in Luau.",
+		"params": [
+			{
+				"name": "func",
+				"documentation": "@roblox/global/islclosure/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/closures.md#islclosure",
+		"code_sample": "print(islclosure(print)) --> false\nprint(islclosure(function() end)) --> true"
+	},
+	"@roblox/global/isexecutorclosure": {
+		"documentation": "Returns whether or not `func` was created by the executor.",
+		"params": [
+			{
+				"name": "func",
+				"documentation": "@roblox/global/isexecutorclosure/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/closures.md#isexecutorclosure",
+		"code_sample": "print(isexecutorclosure(isexecutorclosure)) --> true\nprint(isexecutorclosure(function() end)) --> true\nprint(isexecutorclosure(print)) --> false"
+	},
+	"@roblox/global/loadstring": {
+		"documentation": "Generates a chunk from the given source code. The environment of the returned function is the global environment. If there are no compilation errors, the chunk is returned by itself; otherwise, it returns `nil` plus the error message. `chunkname` is used as the chunk name for error messages and debug information.<br><br>⛔ <b>Danger:</b> Vanilla Lua allows `source` to contain Lua bytecode, but it is a security vulnerability. This is a feature that should not be implemented.",
+		"params": [
+			{
+				"name": "source",
+				"documentation": "@roblox/global/loadstring/param/0"
+			},
+			{
+				"name": "chunkname",
+				"documentation": "@roblox/global/loadstring/param/1"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/closures.md#loadstring",
+		"code_sample": "local func, err = loadstring(\"print('Hello, world!')\")\nassert(func, err)() --> Hello, world!\n\nlocal func, err = loadstring(\"print('Hello\")\nassert(func, err)() --> Errors \"Malformed string\""
+	},
+	"@roblox/global/newcclosure": {
+		"documentation": "Returns a C closure that wraps `func`. The result is functionally identical to `func`, but identifies as a C closure, and may have different metadata.<br><br>⚠️ <b>Warning:</b> Attempting to yield inside a C closure will throw an error. Instead, use the `task` library to defer actions to different threads.",
+		"params": [
+			{
+				"name": "func",
+				"documentation": "@roblox/global/newcclosure/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/closures.md#newcclosure",
+		"code_sample": "local foo = function() end\nlocal bar = newcclosure(foo)\n\nprint(iscclosure(foo)) --> false\nprint(iscclosure(bar)) --> true"
+	},
+	"@unc/global/identifyexecutor": {
+		"documentation": "Returns the name and version of the current executor.",
+		"params": [],
+		"returns": [
+			{
+				"type": "string",
+				"documentation": "The name of the executor."
+			},
+			{
+				"type": "string",
+				"documentation": "The version of the executor."
+			}
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#identifyexecutor",
+		"code_sample": ""
+	},
+	"@unc/global/lz4compress": {
+		"documentation": "Compresses `data` using LZ4 compression.",
+		"params": [
+			{
+				"name": "data",
+				"type": "string",
+				"documentation": "@unc/global/lz4compress/param/0"
+			}
+		],
+		"returns": [
+			{
+				"type": "string",
+				"documentation": "The compressed data as a string."
+			}
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#lz4compress",
+		"code_sample": ""
+	},
+	"@unc/global/lz4decompress": {
+		"documentation": "Decompresses `data` using LZ4 compression, with the decompressed size specified by `size`.",
+		"params": [
+			{
+				"name": "data",
+				"type": "string",
+				"documentation": "@unc/global/lz4decompress/param/0"
+			},
+			{
+				"name": "size",
+				"type": "number",
+				"documentation": "@unc/global/lz4decompress/param/1"
+			}
+		],
+		"returns": [
+			{
+				"type": "string",
+				"documentation": "The decompressed original data."
+			}
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#lz4decompress",
+		"code_sample": ""
+	},
+	"@unc/global/messagebox": {
+		"documentation": "Creates a message box with the specified text, caption, and flags. Yields until the message box is closed, and returns the user input code.",
+		"params": [
+			{
+				"name": "text",
+				"type": "string",
+				"documentation": "@unc/global/messagebox/param/0"
+			},
+			{
+				"name": "caption",
+				"type": "string",
+				"documentation": "@unc/global/messagebox/param/1"
+			},
+			{
+				"name": "flags",
+				"type": "number",
+				"documentation": "@unc/global/messagebox/param/2"
+			}
+		],
+		"returns": [
+			{
+				"type": "number",
+				"documentation": "The user input code (e.g., IDCANCEL, IDTRYAGAIN, IDCONTINUE)."
+			}
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#messagebox",
+		"code_sample": ""
+	},
+	"@unc/global/queue_on_teleport": {
+		"documentation": "Queues the specified script to be executed after the player teleports to a different place.",
+		"params": [
+			{
+				"name": "code",
+				"type": "string",
+				"documentation": "@unc/global/queue_on_teleport/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#queue_on_teleport",
+		"code_sample": ""
+	},
+	"@unc/global/request": {
+		"documentation": "Sends an HTTP request using the specified options. Yields until the request is complete, and returns the response.",
+		"params": [
+			{
+				"name": "options",
+				"type": "HttpRequest",
+				"documentation": "@unc/global/request/param/0"
+			}
+		],
+		"returns": [
+			{
+				"type": "HttpResponse",
+				"documentation": "@unc/globaltype/HttpResponse"
+			}
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#request",
+		"code_sample": ""
+	},
+	"@unc/global/setclipboard": {
+		"documentation": "Copies `text` to the clipboard.",
+		"params": [
+			{
+				"name": "text",
+				"type": "string",
+				"documentation": "@unc/global/setclipboard/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#setclipboard",
+		"code_sample": ""
+	},
+	"@unc/global/setfpscap": {
+		"documentation": "Sets the in-game FPS cap to `fps`. If `fps` is `0`, the FPS cap is disabled.",
+		"params": [
+			{
+				"name": "fps",
+				"type": "number",
+				"documentation": "@unc/global/setfpscap/param/0"
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#setfpscap",
+		"code_sample": ""
+	},
+	"@unc/globaltype/HttpRequest": {
+		"documentation": "A table defining the options for an HTTP request.",
+		"keys": {
+			"Url": "@unc/globaltype/HttpRequest.Url",
+			"Method": "@unc/globaltype/HttpRequest.Method",
+			"Body": "@unc/globaltype/HttpRequest.Body",
+			"Headers": "@unc/globaltype/HttpRequest.Headers",
+			"Cookies": "@unc/globaltype/HttpRequest.Cookies"
+		},
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#request",
+		"code_sample": ""
+	},
+	"@unc/globaltype/HttpRequest.Url": {
+		"documentation": "The URL for the request.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#request",
+		"code_sample": ""
+	},
+	"@unc/globaltype/HttpRequest.Method": {
+		"documentation": "The HTTP method to use. Can be `GET`, `POST`, `PATCH`, or `PUT`.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#request",
+		"code_sample": ""
+	},
+	"@unc/globaltype/HttpRequest.Body": {
+		"documentation": "The body of the request (optional).",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#request",
+		"code_sample": ""
+	},
+	"@unc/globaltype/HttpRequest.Headers": {
+		"documentation": "A table of headers (optional).",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#request",
+		"code_sample": ""
+	},
+	"@unc/globaltype/HttpRequest.Cookies": {
+		"documentation": "A table of cookies (optional).",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#request",
+		"code_sample": ""
+	},
+	"@unc/globaltype/HttpResponse": {
+		"documentation": "The response from an HTTP request.",
+		"keys": {
+			"Body": "@unc/globaltype/HttpResponse.Body",
+			"StatusCode": "@unc/globaltype/HttpResponse.StatusCode",
+			"StatusMessage": "@unc/globaltype/HttpResponse.StatusMessage",
+			"Success": "@unc/globaltype/HttpResponse.Success",
+			"Headers": "@unc/globaltype/HttpResponse.Headers"
+		},
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#response",
+		"code_sample": ""
+	},
+	"@unc/globaltype/HttpResponse.Body": {
+		"documentation": "The body of the response.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#response",
+		"code_sample": ""
+	},
+	"@unc/globaltype/HttpResponse.StatusCode": {
+		"documentation": "The number status code of the response.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#response",
+		"code_sample": ""
+	},
+	"@unc/globaltype/HttpResponse.StatusMessage": {
+		"documentation": "The status message of the response.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#response",
+		"code_sample": ""
+	},
+	"@unc/globaltype/HttpResponse.Success": {
+		"documentation": "Whether or not the request was successful.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#response",
+		"code_sample": ""
+	},
+	"@unc/globaltype/HttpResponse.Headers": {
+		"documentation": "A dictionary of headers.",
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/misc.md#response",
+		"code_sample": ""
+	},
+
+	"@roblox/global/getrawmetatable": {
+		"documentation": "Returns the metatable of `object`, bypassing the `__metatable` lock. This is identical to `getmetatable` but ignores the metamethod.",
+		"params": [
+			{
+				"name": "object",
+				"documentation": "A table or userdata whose raw metatable you want to retrieve."
+			}
+		],
+		"returns": [
+			{
+				"type": "table",
+				"documentation": "The raw metatable of the object, or `nil` if it has none."
+			}
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/metatable.md",
+		"code_sample": "local object = setmetatable({}, { __metatable = \"Locked!\" })\nprint(getrawmetatable(object)) --> table"
+	},
+	"@roblox/global/hookmetamethod": {
+		"documentation": "Replaces a metamethod of an object with a hook function. The hook is called instead of the original metamethod. Returns a function that can be used to call the original metamethod.\n\n<strong>⚠️ The hook function cannot yield or block the thread.</strong>\n<strong>⚠️ Avoid calling the hooked metamethod from within the hook to prevent recursion.</strong>",
+		"params": [
+			{
+				"name": "object",
+				"documentation": "The object (table or userdata) whose metamethod you want to hook."
+			},
+			{
+				"name": "method",
+				"documentation": "The name of the metamethod to hook (e.g., \"__index\", \"__namecall\")."
+			},
+			{
+				"name": "hook",
+				"documentation": "The function that will replace the original metamethod."
+			}
+		],
+		"returns": [
+			{
+				"type": "function",
+				"documentation": "A reference to the original metamethod, which can be called to bypass the hook."
+			}
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/metatable.md",
+		"code_sample": "local refs = {}\nrefs.__namecall = hookmetamethod(game, \"__namecall\", function(...)\n    local method = getnamecallmethod()\n    if method == \"service\" then\n        error(\"Blocked game:service()\")\n    end\n    return refs.__namecall(...)\nend)"
+	},
+	"@roblox/global/getnamecallmethod": {
+		"documentation": "Returns the name of the method that triggered the current `__namecall` metamethod. This function is only useful inside a `__namecall` hook.",
+		"params": [],
+		"returns": [
+			{
+				"type": "string",
+				"documentation": "The name of the method being called (e.g., \"service\", \"GetService\")."
+			}
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/metatable.md",
+		"code_sample": "hookmetamethod(game, \"__namecall\", function(...)\n    local method = getnamecallmethod()\n    if method == \"service\" then\n        error(\"Not allowed\")\n    end\n    return ...\nend)"
+	},
+	"@roblox/global/isreadonly": {
+		"documentation": "Checks whether a table or userdata is frozen (read‑only). This is identical to `table.isfrozen` but also works on userdata.",
+		"params": [
+			{
+				"name": "object",
+				"documentation": "The table or userdata to check."
+			}
+		],
+		"returns": [
+			{
+				"type": "boolean",
+				"documentation": "`true` if the object is read‑only, otherwise `false`."
+			}
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/metatable.md",
+		"code_sample": "local t = {}\ntable.freeze(t)\nprint(isreadonly(t)) --> true"
+	},
+	"@roblox/global/setrawmetatable": {
+		"documentation": "Sets the metatable of an object, bypassing the `__metatable` lock. This works even if the object already has a metatable with a `__metatable` field.",
+		"params": [
+			{
+				"name": "object",
+				"documentation": "The table or userdata whose metatable you want to set."
+			},
+			{
+				"name": "metatable",
+				"documentation": "The new metatable to assign."
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/metatable.md",
+		"code_sample": "local obj = {}\nsetrawmetatable(obj, { __index = { x = 42 } })\nprint(obj.x) --> 42"
+	},
+	"@roblox/global/setreadonly": {
+		"documentation": "Sets the read‑only (frozen) state of a table or userdata. This is identical to `table.freeze`/`table.isfrozen` but works on any object.",
+		"params": [
+			{
+				"name": "object",
+				"documentation": "The table or userdata to modify."
+			},
+			{
+				"name": "readonly",
+				"documentation": "`true` to make the object read‑only, `false` to make it writable."
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/metatable.md",
+		"code_sample": "local t = {}\nsetreadonly(t, true)\nt.x = 1 --> error: attempt to modify a readonly table"
+	},
+	"@roblox/global/cache.invalidate": {
+		"documentation": "Deletes `object` from the Instance cache. Effectively invalidates `object` as a reference to the underlying Instance.",
+		"params": [
+			{
+				"name": "object",
+				"documentation": "The Instance object to invalidate."
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/cache.md#function-invalidate",
+		"code_sample": "local Lighting = game:GetService(\"Lighting\")\ncache.invalidate(game:GetService(\"Lighting\"))\nprint(Lighting, Lighting == game:GetService(\"Lighting\")) --> Lighting, false"
+	},
+	"@roblox/global/cache.iscached": {
+		"documentation": "Checks whether `object` exists in the Instance cache.",
+		"params": [
+			{
+				"name": "object",
+				"documentation": "The Instance object to check."
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/cache.md#function-iscached",
+		"code_sample": "local Lighting = game:GetService(\"Lighting\")\ncache.invalidate(Lighting)\nprint(cache.iscached(Lighting)) --> false"
+	},
+	"@roblox/global/cache.replace": {
+		"documentation": "Replaces `object` in the Instance cache with `newObject`.",
+		"params": [
+			{
+				"name": "object",
+				"documentation": "The Instance object to replace."
+			},
+			{
+				"name": "newObject",
+				"documentation": "The new Instance object to replace `object` with."
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/cache.md#function-replace",
+		"code_sample": "local Lighting = game:GetService(\"Lighting\")\nlocal Players = game:GetService(\"Players\")\n\ncache.replace(Lighting, Players)\n\nprint(Lighting) --> Players"
+	},
+	"@roblox/global/cloneref": {
+		"documentation": "Returns a copy of the Instance reference to `object`. This is useful for managing an Instance without directly referencing it.",
+		"params": [
+			{
+				"name": "object",
+				"documentation": "The Instance to clone."
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/cache.md#global-function-cloneref",
+		"code_sample": "local Lighting = game:GetService(\"Lighting\")\nlocal LightingClone = cloneref(Lighting)\n\nprint(Lighting == LightingClone) --> false"
+	},
+	"@roblox/global/compareinstances": {
+		"documentation": "Returns whether objects `a` and `b` both reference the same Instance.",
+		"params": [
+			{
+				"name": "a",
+				"documentation": "The first Instance to compare."
+			},
+			{
+				"name": "b",
+				"documentation": "The second Instance to compare."
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/cache.md#global-function-compareinstances",
+		"code_sample": "local Lighting = game:GetService(\"Lighting\")\nlocal LightingClone = cloneref(Lighting)\n\nprint(Lighting == LightingClone) --> false\nprint(compareinstances(Lighting, LightingClone)) --> true"
+	},
+
+	"@roblox/global/getgc": {
+		"documentation": "Returns a list of objects in the Luau garbage collector.",
+		"params": [
+			{
+				"name": "includeTables",
+				"documentation": "Whether or not to include tables in the list. If false or omitted, tables are excluded."
+			}
+		],
+		"returns": [
+			"A list of objects (functions, userdata, or tables) currently tracked by the garbage collector."
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/scripts.md#getgc",
+		"code_sample": ""
+	},
+	"@roblox/global/getgenv": {
+		"documentation": "Returns the custom global environment of the executor. It can be used to add global functions or share variables between scripts.",
+		"params": [],
+		"returns": ["A table representing the executor's global environment."],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/scripts.md#getgenv",
+		"code_sample": "-- Prevent a script from being run twice\nif getgenv().__IS_LOADED then\n\terror(\"This script is already loaded!\")\nend\n\ngetgenv().__IS_LOADED = true"
+	},
+	"@roblox/global/getloadedmodules": {
+		"documentation": "Returns a list of ModuleScripts that have been loaded.",
+		"params": [
+			{
+				"name": "excludeCore",
+				"documentation": "Whether or not to exclude core modules from the list. If true, core-related modules are omitted."
+			}
+		],
+		"returns": ["A list of loaded ModuleScript instances."],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/scripts.md#getloadedmodules",
+		"code_sample": "local modules = getloadedmodules(true)\n\nfor _, module in ipairs(modules) do\n\tprint(module:GetFullName())\nend"
+	},
+	"@roblox/global/getrenv": {
+		"documentation": "Returns the global environment of the game client. It can be used to access the global functions that LocalScripts and ModuleScripts use.",
+		"params": [],
+		"returns": ["A table representing the game client's global environment."],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/scripts.md#getrenv",
+		"code_sample": "-- Prevent scripts in PlayerScripts from being required\nlocal refs = {}\nlocal bannedScripts = game:GetService(\"Players\").LocalPlayer.PlayerScripts\n\nrefs.require = hookfunction(require, function(...)\n\tlocal module = ...\n\tif\n\t\ttypeof(module) == \"Instance\"\n\t\tand module:IsA(\"ModuleScript\")\n\t\tand module:IsDescendantOf(bannedScripts)\n\tthen\n\t\terror(\"You are not allowed to require this module!\")\n\tend\n\treturn refs.require(...)\nend)"
+	},
+	"@roblox/global/getrunningscripts": {
+		"documentation": "Returns a list of scripts that are currently running.",
+		"params": [],
+		"returns": [
+			"A list of LocalScript or ModuleScript instances that are executing."
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/scripts.md#getrunningscripts",
+		"code_sample": "local scripts = getrunningscripts()\n\nfor _, object in ipairs(scripts) do\n\tprint(object:GetFullName(), \"(\" .. object.ClassName .. \")\")\nend"
+	},
+	"@roblox/global/getscriptbytecode": {
+		"documentation": "Returns the raw Luau bytecode of the given script.",
+		"params": [
+			{
+				"name": "script",
+				"documentation": "A client‑running LocalScript or ModuleScript."
+			}
+		],
+		"returns": ["A string containing the bytecode."],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/scripts.md#getscriptbytecode",
+		"code_sample": "local animate = game:GetService(\"Players\").LocalPlayer.Character.Animate\nlocal bytecode = getscriptbytecode(animate)"
+	},
+	"@roblox/global/getscriptclosure": {
+		"documentation": "Generates a new closure using the bytecode of the script.",
+		"params": [
+			{
+				"name": "script",
+				"documentation": "The script to recreate as a function."
+			}
+		],
+		"returns": [
+			"A function that, when called, executes the script’s bytecode."
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/scripts.md#getscriptclosure",
+		"code_sample": "local module = game:GetService(\"CoreGui\").RobloxGui.Modules.Common.Constants\n\nlocal constants = getrenv().require(module)\nlocal generatedConstants = getscriptclosure(module)()\n\nprint(constants == generatedConstants) --> false\nfor k, v in pairs(constants) do\n\tprint(k, typeof(v) == typeof(generatedConstants[k])) --> true\nend"
+	},
+	"@roblox/global/getscripthash": {
+		"documentation": "Returns a SHA384 hash of the script's bytecode. This is useful for detecting changes to a script's source code.",
+		"params": [
+			{
+				"name": "script",
+				"documentation": "A client‑running LocalScript or ModuleScript."
+			}
+		],
+		"returns": ["A SHA384 hash string of the script’s bytecode."],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/scripts.md#getscripthash",
+		"code_sample": "local animate = game:GetService(\"Players\").LocalPlayer.Character.Animate\nlocal hash = getscripthash(animate)\n\ntask.delay(1.5, function ()\n\tanimate.Source = \"print('Hello World!')\"\nend)\n\nfor i = 1, 5 do\n\ttask.wait(0.5)\n\n\tlocal newHash = getscripthash(animate)\n\n\tif hash ~= newHash then\n\t\tprint(\"The script has changed!\")\n\t\thash = newHash\n\telse\n\t\tprint(\"The script has not changed.\")\n\tend\nend"
+	},
+	"@roblox/global/getscripts": {
+		"documentation": "Returns a list of every script in the game.",
+		"params": [],
+		"returns": [
+			"A list of all LocalScript and ModuleScript instances present in the game."
+		],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/scripts.md#getscripts",
+		"code_sample": "local scripts = getscripts()\n\nfor _, object in ipairs(scripts) do\n\tprint(object:GetFullName(), \"(\" .. object.ClassName .. \")\")\nend"
+	},
+	"@roblox/global/getsenv": {
+		"documentation": "Returns the global environment of the given script. It can be used to access variables and functions that are not defined as local.",
+		"params": [
+			{
+				"name": "script",
+				"documentation": "A client‑running LocalScript or ModuleScript."
+			}
+		],
+		"returns": ["A table representing the script’s global environment."],
+		"learn_more_link": "https://github.com/unified-naming-convention/NamingStandard/blob/main/api/scripts.md#getsenv",
+		"code_sample": "local animate = game:GetService(\"Players\").LocalPlayer.Character.Animate\nlocal environment = getsenv(animate)\n\nfor k, v in pairs(environment) do\n\tprint(k, v, \"(\" .. typeof(v) .. \")\")\nend"
+	},
+	"@roblox/global/getthreadidentity": {
+		"documentation": "Returns the identity of the current thread.",
+		"params": [],
+		"returns": [
+			"A number representing the current thread identity (security context)."
+		],
+		"learn_more_link": "https://create.roblox.com/docs/scripting/identity",
+		"code_sample": "local identity = getthreadidentity()\nprint(identity) --> 7"
+	},
+	"@roblox/global/setthreadidentity": {
+		"documentation": "Sets the current thread identity.",
+		"params": [
+			{
+				"name": "identity",
+				"documentation": "The new thread identity (a number from 0–10, though values 2–8 are most common)."
+			}
+		],
+		"returns": [],
+		"learn_more_link": "https://create.roblox.com/docs/scripting/identity",
+		"code_sample": "setthreadidentity(3)\nprint(getthreadidentity()) --> 3"
+	}
+}
