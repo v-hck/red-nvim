@@ -65,18 +65,6 @@ return {
 		lazy = false,
 	},
 
-	-- ALE
-	{
-		"dense-analysis/ale",
-		config = function()
-			local g = vim.g
-			g.ale_linters = {
-				python = { "mypy" },
-				lua = { "lua_language_server" },
-			}
-		end,
-	},
-
 	-- Illuminate
 	{ "RRethy/vim-illuminate" },
 
@@ -85,13 +73,6 @@ return {
 		"vhyrro/luarocks.nvim",
 		priority = 1001,
 		opts = { rocks = { "magick", "dkjson", "luafilesystem" } },
-	},
-
-	-- Trouble
-	{
-		"folke/trouble.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = {},
 	},
 
 	-- Mini plugins

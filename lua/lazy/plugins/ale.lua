@@ -13,7 +13,7 @@ return {
 		-- An empty list here means "use the default ALE linters" for that filetype.
 		-- To restrict to specific linters, list them, e.g., javascript = { 'eslint' }
 		linters = {
-			python = { "ruff", "flakeheaven", "basedpyright" },
+			python = { "basedpyright" },
 			lua = { "lua-language-server", "luacheck" },
 			luau = { "luau-language-server", "selene" },
 			vim = { "vint", "vim-language-server" },
@@ -28,7 +28,7 @@ return {
 			["*"] = { "remove_trailing_lines", "trim_whitespace" }, -- global fixers for all files
 			lua = { "stylua" }, -- example for Lua
 			luau = { "stylua" }, -- example for Lua
-			python = { "ruff" }, -- example for Python
+			python = { "basedpyright" }, -- example for Python
 			json = { "fixjson" },
 		},
 		-- === Signs (Gutter) ===

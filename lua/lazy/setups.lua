@@ -216,42 +216,6 @@ lualine.setup({
 	},
 })
 
--- Setup language servers.
-local lspconfig = require("lspconfig")
-lspconfig.pyright.setup({
-	settings = {
-		pyright = {
-			-- Using Ruff's import organizer
-			disableOrganizeImports = true,
-		},
-		python = {
-			analysis = {
-				-- Ignore all files for analysis to exclusively use Ruff for linting
-				ignore = { "*" },
-			},
-		},
-	},
-	offset_encoding = "utf-8",
-})
-
-lspconfig.ts_ls.setup({})
-
--- Setup Ruff Linter
-lspconfig.ruff.setup({
-	init_options = {
-		settings = {
-			-- Any extra CLI arguments for `ruff` go here.
-			args = {
-				"--select=E,F,UP,N,I,ASYNC,S,PTH",
-				"--line-length=79",
-				"--respect-gitignore", -- Исключать из сканирования файлы в .gitignore
-				"--target-version=py311",
-			},
-		},
-	},
-	offset_encoding = "utf-8",
-})
-
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)

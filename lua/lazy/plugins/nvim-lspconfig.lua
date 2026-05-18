@@ -5,30 +5,41 @@ return {
 	opts = {
 		-- Серверы, которые нужно включить (из :help lspconfig-all)
 		-- Добавляйте сюда названия серверов, которые вы установили
-		-- servers = {
-		-- 	'lua_ls',  -- Lua
-		-- 	'ts_ls',   -- JavaScript/TypeScript (или 'vtsls')
-		-- 	'pyright', -- Python
-		-- 	'rust_analyzer', -- Rust
-		-- 	'gopls',   -- Go
-		-- 	-- и так далее...
-		-- },
-		-- Глобальные настройки для ВСЕХ серверов (опционально)
+		servers = {
+			"basedpyright",
+			"bash-language-server",
+			"circleci-yaml-language-server",
+			"flakeheaven",
+			"hyprls",
+			"json-lsp",
+			"luau-lsp",
+			"lua-language-server",
+			-- "ruff",
+			"selene",
+			"stylua",
+			"typescript-language-server",
+			"vim-language-server",
+			"vint",
+			-- "emmylua",
+			-- "emmylua_ls",
+			"cpptools",
+			"cpplint",
+			-- "",
+		},
 		settings = {
-			-- Пример для Lua
-			Lua = {
-				runtime = { version = "LuaJIT" },
-				workspace = {
-					library = vim.api.nvim_get_runtime_file("", true), -- FIX: idk why it dont work
-					checkThirdParty = false,
-				},
-				diagnostics = {
-					globals = {
-						"vim",
-					},
-				},
-				telemetry = { enable = false },
-			},
+			-- lua_language_server = {
+			-- 	runtime = { version = "LuaJIT" },
+			-- 	workspace = {
+			-- 		library = vim.api.nvim_get_runtime_file("", true), -- FIX: idk why it dont work
+			-- 		checkThirdParty = false,
+			-- 	},
+			-- 	diagnostics = {
+			-- 		globals = {
+			-- 			"vim",
+			-- 		},
+			-- 	},
+			-- 	telemetry = { enable = false },
+			-- },
 		},
 	},
 	config = function(_, opts)
@@ -58,17 +69,5 @@ return {
 				vim.lsp.enable(server) -- комментарий: включение сервера для его filetypes
 			end
 		end
-
-		-- 3. Настройка обработчика для автоматического завершения (если не используется отдельный плагин)
-		-- Если у вас есть плагин для автодополнения (например, blink.cmp, nvim-cmp), закомментируйте или удалите эту секцию
-		-- vim.api.nvim_create_autocmd('LspAttach', {
-		--   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-		--   callback = function(ev)
-		--     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-		--     if client and client.server_capabilities.completionProvider then
-		--       vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc' -- комментарий: базовое завершение через Ctrl+X Ctrl+O
-		--     end
-		--   end,
-		-- })
 	end,
 }

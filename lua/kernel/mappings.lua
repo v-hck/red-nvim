@@ -1,16 +1,10 @@
 vim.g.mapleader = " "
 
--- Quit
 vim.keymap.set("n", "<C-q>", "<cmd>:q<CR>")
-
--- Copy all text
--- vim.keymap.set('n', '<C-a>', '<cmd>%y+<CR>')
-
--- Saving a file via Ctrl+S
 vim.keymap.set("i", "<C-s>", "<cmd>:w<CR>")
 vim.keymap.set("n", "<C-s>", "<cmd>:w<CR>")
+vim.api.nvim_set_keymap('v', '<C-c>', 'y:%s/<C-r>"//g<Left><Left>', { noremap = true })
 
--- custom
 local function copy_whole_file_formatted()
 	local filetype = vim.bo.filetype
 	if filetype == "" then
@@ -18,7 +12,7 @@ local function copy_whole_file_formatted()
 	end
 
 	local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-	table.insert(lines, 1, "```" .. filetype)
+	table.insert(lines, 1, "./"..vim.fn.expand('%').."```" .. filetype)
 	table.insert(lines, #lines + 1, "```")
 	local formatted_text = table.concat(lines, "\n")
 
