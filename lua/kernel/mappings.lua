@@ -106,6 +106,102 @@ vim.keymap.set("n", "<leader>af", ":ALEFix<CR>", { desc = "Fix file with configu
 vim.keymap.set("n", "<leader>aT", ":ALEToggle<CR>", { desc = "Toggle ALE on/off for buffer" })
 vim.keymap.set("n", "<leader>ai", ":ALEInfo<CR>", { desc = "Show ALE info for current buffer" })
 
+-- === янк диагностик и LSP-вывода в системный clipboard ===
+
+local function diag_at_cursor(wanted_severity)
+	local bufnr, line, col = 0, vim.fn.line(".") - 1, vim.fn.col(".") - 1
+	local diags = vim.diagnostic.get(bufnr, { lnum = line })
+	-- точное попадание по спану
+	for _, d in ipairs(diags) do
+		if (not wanted_severity or d.severity == wanted_severity) and col >= d.col and (not d.end_col or col < d.end_col) then
+			return d
+		end
+	end
+	-- fallback: первая на строке
+	for _, d in ipairs(diags) do
+		if not wanted_severity or d.severity == wanted_severity then
+			return d
+		end
+	end
+	return nil
+end
+
+local function fmt_diag(d)
+	local sev = vim.diagnostic.severity[d.severity] or "?"
+	local parts = { string.format("[%s] %d:%d", sev, d.lnum + 1, d.col + 1) }
+	if d.source then table.insert(parts, "(" .. d.source .. ")") end
+	if d.code  then table.insert(parts, "[" .. d.code .. "]") end
+	table.insert(parts, d.message)
+	return table.concat(parts, " ")
+end
+
+local function yank_current(severity, name)
+	local d = diag_at_cursor(severity)
+	if not d then print("No " .. name .. " under cursor") return end
+	local text = fmt_diag(d)
+	vim.fn.setreg("+", text)
+	vim.fn.setreg("*", text)
+	print("Current " .. name .. " yanked")
+end
+
+local function yank_all(severity, name)
+	local diags = vim.diagnostic.get(0, { severity = severity })
+	if #diags == 0 then print("No " .. name .. "s in buffer") return end
+	local lines = {}
+	for _, d in ipairs(diags) do table.insert(lines, fmt_diag(d)) end
+	local text = table.concat(lines, "\n")
+	vim.fn.setreg("+", text)
+	vim.fn.setreg("*", text)
+	print(#diags .. " " .. name .. "(s) yanked")
+end
+
+local function yank_lsp_hover()
+	local bufnr = vim.api.nvim_get_current_buf()
+	if #vim.lsp.get_clients({ bufnr = bufnr }) == 0 then
+		print("No LSP attached")
+		return
+	end
+	local params = vim.lsp.util.make_position_params()
+	local res = vim.lsp.buf_request_sync(bufnr, "textDocument/hover", params, 1000)
+	if not res or vim.tbl_isempty(res) then print("No hover response") return end
+	for _, resp in pairs(res) do
+		if resp.result and resp.result.contents then
+			local c = resp.result.contents
+			local text
+			if type(c) == "string" then
+				text = c
+			elseif c.kind then -- MarkupContent
+				text = c.value
+			elseif vim.islist(c) then -- MarkedString[]
+				local p = {}
+				for _, it in ipairs(c) do
+					if type(it) == "string" then table.insert(p, it)
+					elseif it.language then table.insert(p, it.value)
+					elseif it.value then table.insert(p, it.value) end
+				end
+				text = table.concat(p, "\n")
+			elseif c.value then
+				text = c.value
+			end
+			if text and text ~= "" then
+				-- чистим markdown для читаемости
+				text = text:gsub("```[%w_]*\n?", "\n"):gsub("\n+", "\n"):gsub("^%s+", ""):gsub("%s+$", "")
+				vim.fn.setreg("+", text)
+				vim.fn.setreg("*", text)
+				print("LSP hover yanked")
+				return
+			end
+		end
+	end
+	print("Empty hover response")
+end
+
+vim.keymap.set("n", "<leader>xe", function() yank_current(vim.diagnostic.severity.ERROR, "error") end, { desc = "Yank current error" })
+vim.keymap.set("n", "<leader>xE", function() yank_all(vim.diagnostic.severity.ERROR, "error") end, { desc = "Yank all errors" })
+vim.keymap.set("n", "<leader>xw", function() yank_current(vim.diagnostic.severity.WARN, "warning") end, { desc = "Yank current warning" })
+vim.keymap.set("n", "<leader>xW", function() yank_all(vim.diagnostic.severity.WARN, "warning") end, { desc = "Yank all warnings" })
+vim.keymap.set("n", "<leader>xl", yank_lsp_hover, { desc = "Yank LSP hover output" })
+
 vim.keymap.set("n", "<leader>q", "<cmd>NvimTreeFocus<CR>")
 
 local wk = require("which-key")
