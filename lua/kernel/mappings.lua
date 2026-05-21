@@ -204,6 +204,271 @@ vim.keymap.set("n", "<leader>xl", yank_lsp_hover, { desc = "Yank LSP hover outpu
 
 vim.keymap.set("n", "<leader>q", "<cmd>NvimTreeFocus<CR>")
 
+local function project_root(bufnr, markers)
+	local path = vim.api.nvim_buf_get_name(bufnr)
+	local dir = vim.fs.dirname(path)
+	for _, m in ipairs(markers) do
+		local f = vim.fs.find(m, { path = dir, upward = true, stop = vim.loop.os_homedir() })[1]
+		if f then return vim.fs.dirname(f) end
+	end
+	local git = vim.fs.find(".git", { path = dir, upward = true, stop = vim.loop.os_homedir() })[1]
+	return git and vim.fs.dirname(git) or dir
+end
+
+local function insert_above(bufnr, lnum, text)
+	local lines = vim.api.nvim_buf_get_lines(bufnr, lnum, lnum + 1, false)
+	local indent = lines[1] and lines[1]:match("^%s*") or ""
+	if lnum > 0 then
+		local prev = vim.api.nvim_buf_get_lines(bufnr, lnum - 1, lnum, false)[1] or ""
+		if prev:find(vim.pesc(text), 1, true) then
+			print("Already suppressed inline on previous line")
+			return false
+		end
+	end
+	vim.api.nvim_buf_set_lines(bufnr, lnum, lnum, false, { indent .. text })
+	return true
+end
+
+local suppress = {
+	inline = {
+		["lua-language-server"] = function(d)
+			return string.format("---@diagnostic disable-next-line: %s", d.code)
+		end,
+		["Luau"] = function(d)
+			return string.format("--!nolint %s", d.code)
+		end,
+		["luau-lsp"] = function(d)
+			return string.format("--!nolint %s", d.code)
+		end,
+		["lua"] = function(d) -- fallback по filetype
+			return string.format("---@diagnostic disable-next-line: %s", d.code)
+		end,
+		["luau"] = function(d)
+			return string.format("--!nolint %s", d.code)
+		end,
+		["Pyright"] = function(d)
+			return string.format("# pyright: ignore[%s]", d.code)
+		end,
+		["basedpyright"] = function(d)
+			return string.format("# pyright: ignore[%s]", d.code)
+		end,
+		["python"] = function(d)
+			return string.format("# type: ignore  # %s", d.code)
+		end,
+		["flake8"] = function(d)
+			return string.format("# noqa: %s", d.code)
+		end,
+		["flakeheaven"] = function(d)
+			return string.format("# noqa: %s", d.code)
+		end,
+		["shellcheck"] = function(d)
+			return string.format("# shellcheck disable=%s", d.code)
+		end,
+		["bash-language-server"] = function(d)
+			return string.format("# shellcheck disable=%s", d.code)
+		end,
+		["bash"] = function(d)
+			return string.format("# shellcheck disable=%s", d.code)
+		end,
+		["cpplint"] = function(d)
+			return string.format("// NOLINTNEXTLINE(%s)", d.code)
+		end,
+		["clangd"] = function(d)
+			return string.format("// NOLINTNEXTLINE(%s)", d.code)
+		end,
+		["cpptools"] = function(d)
+			return string.format("// NOLINTNEXTLINE(%s)", d.code)
+		end,
+		["cpp"] = function(d)
+			return string.format("// NOLINTNEXTLINE(%s)", d.code)
+		end,
+		["typescript"] = function()
+			return "// @ts-ignore"
+		end,
+		["tsserver"] = function()
+			return "// @ts-ignore"
+		end,
+		["typescript-language-server"] = function()
+			return "// @ts-ignore"
+		end,
+		["typescriptreact"] = function()
+			return "// @ts-ignore"
+		end,
+		["javascript"] = function()
+			return "// @ts-ignore"
+		end,
+	},
+	project = {
+		["lua-language-server"] = {
+			file = ".luarc.json",
+			json = true,
+			patch = function(data, code)
+				data.diagnostics = data.diagnostics or {}
+				data.diagnostics.disable = data.diagnostics.disable or {}
+				if not vim.tbl_contains(data.diagnostics.disable, code) then
+					table.insert(data.diagnostics.disable, code)
+				end
+				return data
+			end,
+		},
+		["basedpyright"] = {
+			file = "pyproject.toml",
+			append = function(code)
+				return string.format('[tool.pyright]\n%s = "none"\n', code)
+			end,
+		},
+		["python"] = {
+			file = "pyproject.toml",
+			append = function(code)
+				return string.format('[tool.pyright]\n%s = "none"\n', code)
+			end,
+		},
+		["shellcheck"] = {
+			file = ".shellcheckrc",
+			append = function(code)
+				return "disable=" .. code .. "\n"
+			end,
+		},
+		["bash-language-server"] = {
+			file = ".shellcheckrc",
+			append = function(code)
+				return "disable=" .. code .. "\n"
+			end,
+		},
+		["bash"] = {
+			file = ".shellcheckrc",
+			append = function(code)
+				return "disable=" .. code .. "\n"
+			end,
+		},
+		["luacheck"] = {
+			file = ".luacheckrc",
+			append = function(code)
+				return string.format('disable = { "%s" }\n', code)
+			end,
+		},
+		["lua"] = {
+			file = ".luacheckrc",
+			append = function(code)
+				return string.format('disable = { "%s" }\n', code)
+			end,
+		},
+		["selene"] = {
+			file = "selene.toml",
+			append = function(code)
+				return string.format('[rules]\n%s = "allow"\n', code)
+			end,
+		},
+		["luau"] = {
+			file = "selene.toml",
+			append = function(code)
+				return string.format('[rules]\n%s = "allow"\n', code)
+			end,
+		},
+		["vint"] = {
+			file = ".vintrc.yaml",
+			append = function(code)
+				return string.format("rules:\n  %s: OFF\n", code)
+			end,
+		},
+		["vim"] = {
+			file = ".vintrc.yaml",
+			append = function(code)
+				return string.format("rules:\n  %s: OFF\n", code)
+			end,
+		},
+		["cpplint"] = {
+			file = "CPPLINT.cfg",
+			append = function(code)
+				return "filter=-" .. code .. "\n"
+			end,
+		},
+		["cpp"] = {
+			file = "CPPLINT.cfg",
+			append = function(code)
+				return "filter=-" .. code .. "\n"
+			end,
+		},
+	},
+}
+
+local function suppress_inline()
+	local d = diag_at_cursor()
+	if not d then
+		print("No diagnostic under cursor")
+		return
+	end
+	local code = tostring(d.code or "unknown")
+	local source = d.source or vim.bo.filetype
+	local h = suppress.inline[source] or suppress.inline[vim.bo.filetype]
+	if not h then
+		print("No inline handler for source: " .. tostring(source))
+		return
+	end
+	local text = h(d)
+	if not text then
+		print("Handler returned nil")
+		return
+	end
+	if insert_above(0, d.lnum, text) then
+		print("Inline suppress added")
+	end
+end
+
+local function suppress_project()
+	local d = diag_at_cursor()
+	if not d then
+		print("No diagnostic under cursor")
+		return
+	end
+	local code = tostring(d.code or "unknown")
+	local source = d.source or vim.bo.filetype
+	local cfg = suppress.project[source] or suppress.project[vim.bo.filetype]
+	if not cfg then
+		print("No project handler for source: " .. tostring(source))
+		return
+	end
+	local bufnr = 0
+	local root = project_root(bufnr, { cfg.file, ".git" })
+	local fpath = root .. "/" .. cfg.file
+
+	if cfg.json then
+		local data = {}
+		if vim.fn.filereadable(fpath) == 1 then
+			local raw = table.concat(vim.fn.readfile(fpath), "\n")
+			local ok, decoded = pcall(vim.fn.json_decode, raw)
+			if ok then
+				data = decoded
+			end
+		end
+		data = cfg.patch(data, code)
+		local out = vim.fn.json_encode(data)
+		-- pretty-print через vim.fn.system или просто однострочник; для luarc сойдёт
+		vim.fn.writefile(vim.split(out, "\n", { plain = true }), fpath)
+		print("Patched " .. cfg.file .. " (+ " .. code .. ")")
+	else
+		local content = ""
+		if vim.fn.filereadable(fpath) == 1 then
+			content = table.concat(vim.fn.readfile(fpath), "\n")
+			if content:sub(-1) ~= "\n" then
+				content = content .. "\n"
+			end
+		end
+		local chunk = cfg.append(code)
+		if not content:find(vim.pesc(chunk:gsub("%s+$", "")), 1, true) then
+			content = content .. chunk
+			vim.fn.writefile(vim.split(content, "\n", { plain = true }), fpath)
+			print("Patched " .. cfg.file .. " (+ " .. code .. ")")
+		else
+			print("Already in " .. cfg.file)
+		end
+	end
+end
+
+vim.keymap.set("n", "<leader>xi", suppress_inline, { desc = "Suppress diagnostic inline" })
+vim.keymap.set("n", "<leader>xP", suppress_project, { desc = "Suppress diagnostic in project config" })
+
+
 local wk = require("which-key")
 wk.add({
 	{ "<leader>e", group = "View Diagnostic Message" },
@@ -221,7 +486,6 @@ wk.add({
 	{ "<leader>d", group = "neogen" },
 	{ "<leader>v", group = "todo-list" },
 	{ "<leader>a", group = "ale" },
-
 	{ "<leader>cW", group = "workspace" },
 	{ "<leader>cl", group = "lsp" },
 })

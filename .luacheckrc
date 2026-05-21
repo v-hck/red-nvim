@@ -1,0 +1,2 @@
+disable = { "undefined-global" }
+
