@@ -6,7 +6,7 @@ return {
 	opts = {
 		-- === Core Linting Behavior ===
 		-- Delay linting after keystrokes (in ms)
-		lint_delay = 200, -- wait 200ms after typing before linting
+		lint_delay = 10, -- wait 200ms after typing before linting
 		-- Only run linters explicitly defined in g:ale_linters
 		-- linters_explicit = 3,                                       -- do not run all possible linters
 		-- Define which linters to run for specific filetypes

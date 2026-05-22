@@ -106,8 +106,6 @@ vim.keymap.set("n", "<leader>af", ":ALEFix<CR>", { desc = "Fix file with configu
 vim.keymap.set("n", "<leader>aT", ":ALEToggle<CR>", { desc = "Toggle ALE on/off for buffer" })
 vim.keymap.set("n", "<leader>ai", ":ALEInfo<CR>", { desc = "Show ALE info for current buffer" })
 
--- === янк диагностик и LSP-вывода в системный clipboard ===
-
 local function diag_at_cursor(wanted_severity)
 	local bufnr, line, col = 0, vim.fn.line(".") - 1, vim.fn.col(".") - 1
 	local diags = vim.diagnostic.get(bufnr, { lnum = line })
