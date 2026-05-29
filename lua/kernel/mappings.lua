@@ -12,7 +12,7 @@ local function copy_whole_file_formatted()
 	end
 
 	local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-	table.insert(lines, 1, "./"..vim.fn.expand('%').."```" .. filetype)
+	table.insert(lines, 1, "./"..vim.fn.expand('%').."\n```" .. filetype)
 	table.insert(lines, #lines + 1, "```")
 	local formatted_text = table.concat(lines, "\n")
 
