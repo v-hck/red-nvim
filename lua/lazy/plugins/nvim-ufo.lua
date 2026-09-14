@@ -55,14 +55,14 @@ return {
 		end,
 
 		-- Какие виды фолдов автоматически закрывать при открытии буфера
-		close_fold_kinds_for_ft = {
-			default = { 'imports', 'comment' }, -- закрыть импорты и комментарии
-			lua = { 'comment' },       -- в lua только комментарии
-			python = { 'imports', 'comment', 'strings' },
-			c = { 'comment', 'region' },
-			cpp = { 'comment', 'region' },
-			json = { 'array' },
-		},
+		-- close_fold_kinds_for_ft = {
+		-- 	default = { 'imports', 'comment' }, -- закрыть импорты и комментарии
+		-- 	lua = { 'comment' },       -- в lua только комментарии
+		-- 	python = { 'imports', 'comment', 'strings' },
+		-- 	c = { 'comment', 'region' },
+		-- 	cpp = { 'comment', 'region' },
+		-- 	json = { 'array' },
+		-- },
 
 		-- Закрывать фолд на текущей строке при первом открытии буфера?
 		close_fold_current_line_for_ft = {

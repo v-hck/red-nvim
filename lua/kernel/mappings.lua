@@ -4,7 +4,7 @@ vim.keymap.set("n", "<C-q>", "<cmd>:q<CR>")
 vim.keymap.set("i", "<C-s>", "<cmd>:w<CR>")
 vim.keymap.set("n", "<C-s>", "<cmd>:w<CR>")
 vim.api.nvim_set_keymap('v', '<C-c>', 'y:%s/<C-r>"//g<Left><Left>', { noremap = true })
-
+vim.keymap.set('n', '<C-Tab>', '<C-w>w', { desc = 'Next window' })
 local function copy_whole_file_formatted()
 	local filetype = vim.bo.filetype
 	if filetype == "" then
