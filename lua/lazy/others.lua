@@ -90,17 +90,6 @@ return {
 	},
 
 	{
-		"masajinobe-ef/suda.nvim",
-		config = function()
-			require("suda").setup({
-				editor = "nvim", -- или nvim-qt, vim
-				use_editor = false, -- true = sudo -e (рекомендую)
-				notify = true,
-			})          -- автоопределение прав, :w работает
-		end,
-	},
-
-	{
 		"folke/neodev.nvim",
 		opts = {}, -- автоматическая настройка
 	},
